@@ -2,6 +2,9 @@
 import "../styles/globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+// In your layout.tsx or _app.js
+import { Kanit, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { ThemeProvider } from "next-themes"
 
 export default function RootLayout({

@@ -1,72 +1,141 @@
 "use client"; // Mark this as a client component
 import React from "react";
+import Image from "next/image";
 
-const educationJourney = [
+// Define the type for a matcha set item
+interface MatchaSetItem {
+  id: number; // Added an ID for the key
+  name: string;
+  description: string;
+  features: string[]; // List of features/benefits
+  price: string; // Or number if you plan to do calculations
+  image: string; // Path to the image for the list view
+  alt: string; // Alt text for the list view image
+}
+
+const matchaSets: MatchaSetItem[] = [
   {
-    year: "2013 - 2019",
-    title: "High School Diploma",
-    institution: "Kampong chnnage high school ",
-    location: "Kampong chnnage",
-    description:
-      "Completed high school with a focus on mathematics and sciences.",
+    id: 1,
+    name: "Classic Ceramic Bowl Set",
+    description: "A timeless matcha bowl set crafted from high-quality ceramic.",
+    features: ["Hand-painted finish", "Authentic shape", "Easy to clean"],
+    price: "$45.00",
+    image: "/matcha-set-1-thumb.jpg", // Replace with your actual thumbnail image path
+    alt: "Classic Ceramic Matcha Bowl Set"
   },
   {
-    year: "2019 - 2023",
-    title: "Bachelor degree of IT Engineering ",
-    institution: "Royal university of Phnom penh",
-    location: "Phnom Penh, Cambodia",
-    description:
-      "Rupp University's Bachelor's in Information Technology Engineering is a comprehensive program blending theory and practice in IT. It covers software development, network design, and system analysis. The course emphasizes real-world applications, problem-solving, and innovation in technology. With experienced faculty and modern facilities, students are prepared for diverse IT careers. This program is ideal for aspiring IT professionals seeking to make an impact in the tech industry.",
+    id: 2,
+    name: "Bamboo & Stone Ritual Set",
+    description: "An elegant combination of natural bamboo tools and a stone bowl.",
+    features: ["Includes whisk (chasen)", "Scoop (chashaku)", "Natural materials"],
+    price: "$65.00",
+    image: "/matcha-set-2-thumb.jpg", // Replace with your actual thumbnail image path
+    alt: "Bamboo and Stone Matcha Ritual Set"
   },
   {
-    year: "2021 - 2022",
-    title: "Computers training course ",
-    institution: "ETEC CENTER",
-    location: "Phnom Penh, Cambodia",
-    description:
-      "PROJECT COURSES, Complete WEB FRONTEND COURSE and BASIC / ADVANCE JAVA / SQL SERVER",
+    id: 3,
+    name: "Modern Minimalist Set",
+    description: "A sleek, contemporary take on the traditional matcha experience.",
+    features: ["Geometric design", "Matte finish", "Compact storage"],
+    price: "$55.00",
+    image: "/matcha-set-3-thumb.jpg", // Replace with your actual thumbnail image path
+    alt: "Modern Minimalist Matcha Set"
+  },
+  {
+    id: 4,
+    name: "Premium Handcrafted Bowl",
+    description: "A unique, individually crafted bowl by a master artisan.",
+    features: ["One-of-a-kind design", "Traditional techniques", "Comes with certificate"],
+    price: "$85.00",
+    image: "/matcha-set-4-thumb.jpg", // Replace with your actual thumbnail image path
+    alt: "Premium Handcrafted Matcha Bowl"
+  },
+  {
+    id: 5,
+    name: "Travel-Friendly Kit",
+    description: "A portable set perfect for enjoying matcha on the go.",
+    features: ["Compact and lightweight", "Durable materials", "Carrying case included"],
+    price: "$35.00",
+    image: "/matcha-set-5-thumb.jpg", // Replace with your actual thumbnail image path
+    alt: "Travel-Friendly Matcha Kit"
+  },
+  {
+    id: 6,
+    name: "Luxury Gold-Edged Set",
+    description: "An opulent set featuring gold accents for a special occasion.",
+    features: ["Gold rim details", "Premium packaging", "Ideal gift option"],
+    price: "$95.00",
+    image: "/matcha-set-6-thumb.jpg", // Replace with your actual thumbnail image path
+    alt: "Luxury Gold-Edged Matcha Set"
   },
 ];
 
-const EducationSection = () => {
+const MatchaSetsSection = () => {
   return (
-    <section id="education" className="py-6"> {/* Reduced padding */}
-  <h1 className="my-6 text-center font-bold text-4xl text-gray-900 dark:text-white">
-    My Educational Journey
-    <hr className="w-6 h-1 mx-auto my-4 bg-yellow-500 border-0 rounded"></hr>
-  </h1>
-  {/* Timeline Container */}
-  <div className="relative max-w-4xl mx-auto">
-    {/* Vertical Line */}
-    <div className="absolute top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-700 left-1/2 md:left-[25%] transform -translate-x-1/2 md:-translate-x-0"></div>
-    {educationJourney.map((item, idx) => (
-      <div
-        key={idx}
-        className={`flex flex-col md:flex-row items-start gap-4 mb-6 ${ // Reduced margin
-          idx % 2 === 0 ? "md:flex-row-reverse" : ""
-        }`}
-      >
-        {/* Year Marker */}
-        <div className="flex-shrink-0 relative z-10 w-16 h-16 rounded-full bg-yellow-500 text-white flex items-center justify-center shadow-lg">
-          <p className="text-lg font-bold">{item.year.split(" - ")[0]}</p>
-        </div>
-        {/* Details */}
-        <div className="flex-grow relative z-10 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            {item.title}
-          </h3>
-          <p className="text-sm text-yellow-500 dark:text-yellow-400 mb-2">
-            {item.institution} | {item.location}
-          </p>
-          <p className="text-gray-700 dark:text-gray-300">
-            {item.description}
-          </p>
+    <section id="matcha-sets" className="py-6 bg-transparent"> {/* Changed ID and added bg-transparent */}
+      <h1 className="my-6 text-center font-bold text-4xl text-[#386c00] dark:text-white"> {/* Updated color */}
+        Our Matcha Sets
+        <hr className="w-6 h-1 mx-auto my-4 bg-[#e3edc9] border-0 rounded"></hr> {/* Updated color */}
+      </h1>
+
+      {/* Hero Image Section */}
+      <div className="mb-12"> {/* Add some bottom margin to separate from the list */}
+        <Image
+          src="/IMG_1366.PNG" // Replace with your actual large image path
+          alt="Featured Matcha Set Collection"
+          width={1200} // Adjust width as needed for your layout
+          height={600} // Adjust height as needed for your layout
+          className="w-full h-auto object-cover rounded-xl shadow-lg" // Make it full width, responsive, and add styling
+        />
+      </div>
+
+      {/* List of Matcha Sets */}
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-2xl font-semibold text-center mb-8 text-[#386c00] dark:text-white"> {/* Optional subheading */}
+          Explore Our Matcha set items
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Grid layout for sets */}
+          {matchaSets.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col" // Container for each set card
+            >
+              {/* Image for each set in the grid */}
+              <div className="h-48 w-full relative"> {/* Fixed height container for consistent grid rows */}
+                <Image
+                  src={item.image} // Use the thumbnail image for the grid
+                  alt={item.alt}
+                  fill // Use fill to make the image fill the container
+                  className="object-cover" // Ensure the image covers the space nicely
+                />
+              </div>
+              {/* Details for each set in the grid */}
+              <div className="p-4 flex-grow flex flex-col justify-between"> {/* Flex column to push price to bottom */}
+                <div>
+                  <h3 className="text-lg font-bold text-[#386c00] dark:text-white mb-1"> {/* Updated color */}
+                    {item.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                    {item.description}
+                  </p>
+                  <ul className="list-disc pl-4 text-xs text-gray-500 dark:text-gray-400 mb-2">
+                    {item.features.slice(0, 2).map((feature, featIdx) => ( // Show only first 2 features or adjust as needed
+                      <li key={featIdx} className="truncate">{feature}</li> // Truncate if features are long
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-auto"> {/* Push price to the bottom */}
+                  <span className="text-lg font-semibold text-[#386c00] dark:text-yellow-400"> {/* Updated color */}
+                    {item.price}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    ))}
-  </div>
-</section>
+    </section>
   );
 };
 
-export default EducationSection;
+export default MatchaSetsSection;

@@ -1,264 +1,118 @@
-// import React from "react"
-// import Image from "next/image"
-// import Link from "next/link"
-// import SlideUp from "./SlideUp"
-// import { BsGithub, BsArrowUpRightSquare, BsLinkedin, BsTelegram,BsBrowserChrome } from "react-icons/bs";
-
-
-
-// const projects = [
-//   {
-//     name: "Kampong Chhnang News",
-//     description:
-//       "An informational website for the Ministry of Information in Kampong Chhnang Province, Cambodia. Built with WordPress, custom CSS/HTML, and hosted on Hostinger, it provides news, updates, and essential information to the public.",
-//     image: "/kapongchnnagenewswebsite.png",
-//     github: "https://github.com/hqasmei/thankful-thoughts",
-//     linkedin: "https://www.linkedin.com/in/vong-sahaknit-881831244/", // Replace with your LinkedIn profile URL
-//     telegram: "https://t.me/@Sahaknit",
-//     link: "https://kampongchhnangnews.com/"
-//   },
-//   {
-//     name: "PlatoIO",
-//     description: "PlatoIO is a to do list app that built using the PERN stack.",
-//     image: "/platoio.png",
-//     github: "https://github.com/hqasmei/platoio",
-//     link: "https://platoio.com/register",
-    
-    
-//   },
-//   {
-//     name: "Kator Family Photos",
-//     description:
-//       "Kator Family Photos is a photos and video digitization service in the LA area.",
-//     image: "/familyphotos.png",
-//     github: "https://github.com/hqasmei/katorfamilyphotos",
-//     link: "https://katorfamilyphotos.com/",
-//   },
-// ]
-
-// const ProjectsSection = () => {
-//   return (
-//     <section id="projects">
-//       <h1 className="my-10 text-center font-bold text-4xl">
-//         Projects
-//         <hr className="w-6 h-1 mx-auto my-4 bg-teal-500 border-0 rounded"></hr>
-//       </h1>
-
-//       <div className="flex flex-col space-y-28">
-//         {projects.map((project, idx) => {
-//           return (
-//             <div key={idx}>
-//               <SlideUp offset="-300px 0px -300px 0px">
-//                 <div className="flex flex-col  animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
-//                   <div className=" md:w-1/2">
-//                     <Link href={project.link}>
-//                       <Image
-//                         src={project.image}
-//                         alt=""
-//                         width={1000}
-//                         height={1000}
-//                         className="rounded-xl shadow-xl hover:opacity-70"
-//                       />
-//                     </Link>
-//                   </div>
-//                   <div className="mt-8 md:w-1/2">
-//                     <h1 className="text-4xl font-bold mb-6">{project.name}</h1>
-//                     <p className="text-xl leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
-//                       {project.description}
-//                     </p>
-//                     <div className="flex flex-row align-bottom space-x-4">
-//                       <Link href={project.link} target="_blank">
-//                         <BsLinkedin
-//                           size={30}
-//                           className="hover:-translate-y-1 transition-transform cursor-pointer"
-//                         />
-//                       </Link>
-//                       <Link href={project.link} target="_blank">
-//                         <BsTelegram
-//                           size={30}
-//                           className="hover:-translate-y-1 transition-transform cursor-pointer"
-//                         />
-//                       </Link>
-//                       <Link href={project.link} target="_blank">
-//                         <BsArrowUpRightSquare
-//                           size={30}
-//                           className="hover:-translate-y-1 transition-transform cursor-pointer"
-//                         />
-//                       </Link>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </SlideUp>
-//             </div>
-//           )
-//         })}
-        
-//       </div>
-//     </section>
-//   )
-// }
-
-// export default ProjectsSection
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SlideUp from "./SlideUp";
-import { BsGithub, BsArrowUpRightSquare, BsLinkedin, BsTelegram,BsBrowserChrome } from "react-icons/bs"; // Import LinkedIn and Telegram icons
+import { BsArrowUpRightSquare, BsCartPlus } from "react-icons/bs";
 
-const projects = [
+// Matcha Bowl Products
+const matchaBowls = [
   {
-    name: "Kampong Chhnang News",
-    duration: "Phnom Penh",
-    date: "01 Jun 2025",
-    descriptionHeader: "FREELANCE PROJECT",
+    name: "Classic Matcha Bowl Set",
+    price: "$29.99",
     description:
-      "An informational website designed for the Ministry of Information in Kampong Chhnang Province, Cambodia. Developed using WordPress for seamless content management, with custom UI/UX design implemented through Figma and enhanced with custom CSS/HTML for a polished and user-friendly interface. Hosted on Hostinger , the website delivers news, updates, and essential information to the public, ensuring accessibility, responsiveness, and an engaging user experience.🌐📰",
-    image: "/kapongchnnagenewswebsite.png",
-    github: "https://github.com/vongsahaknit21",
-    link: "https://kampongchhnangnews.com/",
-    linkedin: "https://www.linkedin.com/in/vong-sahaknit-881831244/", // Replace with your LinkedIn profile URL
-    telegram: "https://t.me/@Sahaknit" // Replace with your Telegram link
+      "A handcrafted matcha bowl set featuring a traditional design. Perfect for daily tea rituals with its smooth finish and elegant curves.",
+    image: "/IMG_1361.JPG",
+    link: "/shop/classic-matcha-bowl", // Replace with your product page URL
   },
   {
-    name: "Projectile Motion Simulator",
-    duration: "Phnom Penh",
-    date: "01 NOV 2019 - 01 NOV 2023",
-    descriptionHeader: "Thesis Project",
-    description: "Delving into Projectile Motion A thesis and interactive presentation exploring the physics of projectile trajectories using a custom-designed simulator. It breaks down core principles like launch angles, velocity, and external forces with a strong mathematical foundation. The engaging simulations provide a visual, intuitive understanding of these concepts, making it a valuable resource for physics enthusiasts and academic audiences🎮🕹️🚀",
-    image: "/thesisproject.png",
-    github: "https://github.com/vongsahaknit21",
-    link: "https://platoio.com/register",
-    linkedin: "https://www.linkedin.com/in/vong-sahaknit-881831244/", // No LinkedIn link for this project
-    telegram: "https://t.me/Sahaknit" // No Telegram link for this project
+    name: "Modern Zen Matcha Bowl",
+    price: "$29.99",
+    description:
+      "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts.",
+    image: "/IMG_1362.JPG",
+    link: "/shop/modern-zen-matcha-bowl", // Replace with your product page URL
   },
   {
-    name: "Vegetable Marketplace Website",
-    duration: "Phnom Penh",
-    date: "Jun 2023 -Jun 2023",
-    descriptionHeader: "FREELANCE PROJECT",
+    name: "Premium Ceremonial Set",
+    price: "$29.99",
     description:
-      "A user-friendly e-commerce platform connecting local farmers with customers to buy fresh vegetables. As the UI/UX designer, I used Figma to create wireframes, prototypes, and a vibrant, modern interface ensuring an intuitive shopping experience. The responsive design prioritizes seamless navigation and accessibility for both farmers and buyers, making it a visually appealing and functional solution for the agricultural community. 🌱",
-    image: "/vegetablewebsite.png",
-    github: "https://github.com/vongsahaknit21",
-    link: "https://www.figma.com/design/QWhrZaMO0QIJFO4pbpYdX2/Vegetable-website?node-id=69-3770&t=nPV3ZRBkMjNimiPS-1",
-    linkedin: "https://www.linkedin.com/in/vong-sahaknit-881831244/", // No LinkedIn link for this project
-    telegram: "https://t.me/Sahaknit" // No Telegram link for this project
+      "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection.",
+    image: "/IMG_1360.JPG",
+    link: "/shop/premium-ceremonial-set", // Replace with your product page URL
   },
   {
-    name: "Luy Lern-Fintech application",
-    duration: "Phnom Penh",
-    date: "Feb 2023 - Jun 2023",
-    descriptionHeader: "YEAR 4 PROJECT SEMESTER 2",
+    name: "Travel-Friendly Matcha Kit",
+    price: "$29.99",
     description:
-      "This is a group project for the fourth year andsemester 2 of college. That we work as a team and Ihandle UI/UX design and draw prototype for fintechproject📱💵",
-    image: "/Luy_lern.png",
-    github: "https://github.com/hqasmei/katorfamilyphotos",
-    link: "https://www.figma.com/proto/jQq3g9FQLovQO9uKiM07SB/Fintech_project?page-id=0%3A1&node-id=101-3488&p=f&viewport=135%2C11%2C0.2&t=fpZ8pG2bDux5G0JC-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=101%3A2083",
-    linkedin: "https://www.linkedin.com/in/vong-sahaknit-881831244/", // No LinkedIn link for this project
-    telegram: "https://t.me/Sahaknit" // No Telegram link for this project
+      "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    image: "/IMG_1363.JPG",
+    link: "/shop/travel-matcha-kit", // Replace with your product page URL
   },
-  {
-    name: "ELIB-Mobile Application",
-    duration: "Phnom Penh",
-    date: "Jan 2021 - Jun 2022",
-    descriptionHeader: "YEAR 3 PROJECT",
+   {
+    name: "Travel-Friendly Matcha Kit",
+    price: "$29.99",
     description:
-      "This is a group project for the third year of college.That we work as a team and I handle UI/UX design.",
-    image: "/Elib_project.png",
-    github: "https://github.com/hqasmei/katorfamilyphotos",
-    link: "https://www.figma.com/design/zoJ2mUrcYICI3VFl2TPOJi/ELIB(Book-management-software)?node-id=18-337&t=jteYeSs3yrOxgm2O-1",
-    linkedin: "https://www.linkedin.com/in/vong-sahaknit-881831244/", // No LinkedIn link for this project
-    telegram: "https://t.me/Sahaknit" // No Telegram link for this project
+      "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    image: "/IMG_1364.PNG",
+    link: "/shop/travel-matcha-kit", // Replace with your product page URL
+  }
+  ,
+   {
+    name: "Travel-Friendly Matcha Kit",
+    price: "$29.99",
+    description:
+      "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    image: "/IMG_1365.JPG",
+    link: "/shop/travel-matcha-kit", // Replace with your product page URL
   },
 ];
 
-const ProjectsSection = () => {
+const MatchaBowlListSection = () => {
   return (
-    <section id="projects">
-      <h1 className="my-10 text-center font-bold text-4xl">
-        Projects
-        <hr className="w-6 h-1 mx-auto my-4 bg-yellow-500 border-0 rounded"></hr>
+    <section id="matcha-bowls" className="relative bg-transparent px-6 sm:px-12 lg:px-20">
+      {/* Section Header */}
+      <h1 className="my-10 text-center font-bold text-4xl text-[#386c00]">
+        Our Matcha Bowls
+        <hr className="w-6 h-1 mx-auto my-4 bg-[#e3edc9] border-0 rounded"></hr>
       </h1>
+
+      {/* Matcha Bowl Grid */}
       <div className="flex flex-col space-y-28">
-        {projects.map((project, idx) => {
-          return (
-            <div key={idx}>
-              <SlideUp offset="-300px 0px -300px 0px">
-                <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
-                  <div className="md:w-1/2">
-                    <Link href={project.link} target="_blank">
-                      <Image
-                        src={project.image}
-                        alt=""
-                        width={1000}
-                        height={1000}
-                        className="rounded-xl shadow-xl hover:opacity-70"
-                      />
+        {matchaBowls.map((bowl, idx) => (
+          <div key={idx}>
+            <SlideUp offset="-300px 0px -300px 0px">
+              <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
+                {/* Image Section */}
+                <div className="md:w-1/2">
+                  <Link href={bowl.link} target="_blank">
+                    <Image
+                      src={bowl.image}
+                      alt={bowl.name}
+                      width={1000}
+                      height={1000}
+                      className="rounded-xl shadow-xl hover:opacity-70 transition-opacity"
+                    />
+                  </Link>
+                </div>
+
+                {/* Details Section */}
+                <div className="mt-8 md:w-1/2">
+                  <h1 className="text-4xl font-bold mb-6 text-[#386c00]">
+                    {bowl.name}
+                  </h1>
+                  <p className="text-2xl font-semibold text-[#386c00] mb-4">
+                    {bowl.price}
+                  </p>
+                  <p className="text-lg leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
+                    {bowl.description}
+                  </p>
+                  <div className="flex flex-row align-bottom space-x-4">
+                    {/* Shop Now Button */}
+                    <Link href={bowl.link} target="_blank">
+                      <button className="inline-flex items-center justify-center px-6 py-3 font-bold text-white transition-all duration-300 bg-[#386c00] hover:bg-[#2d5400] rounded-full shadow-lg hover:scale-105 hover:shadow-2xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#386c00] focus:ring-offset-2">
+                        <BsCartPlus size={20} className="mr-2" />
+                        Shop Now
+                      </button>
                     </Link>
                   </div>
-             
-                  <div className="mt-8 md:w-1/2">
-                    <h1 className="text-4xl font-bold mb-6">{project.name}</h1>
-                         {/* Duration and Date */}
-                  <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    <span className="mr-4">{project.duration}</span>
-                    <span>{project.date}</span>
-                  </div>
-
-                  {/* Description Header */}
-                  <h3 className="text-lg font-semibold text-Black mb-2">
-                    {project.descriptionHeader}
-                  </h3>                 
-                    <p className="text-xl leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-row align-bottom space-x-4">
-                      {/* GitHub Link */}
-                      {project.github && (
-                        <Link href={project.github} target="_blank">
-                          <BsGithub
-                            size={30}
-                            className="hover:-translate-y-1 transition-transform cursor-pointer"
-                          />
-                        </Link>
-                      )}
-                      {/* Live Demo Link */}
-                      {project.link && (
-                        <Link href={project.link} target="_blank">
-                          <BsBrowserChrome
-                            size={30}
-                            className="hover:-translate-y-1 transition-transform cursor-pointer"
-                          />
-                        </Link>
-                      )}
-                      {/* LinkedIn Link */}
-                      {project.linkedin && (
-                        <Link href={project.linkedin} target="_blank">
-                          <BsLinkedin
-                            size={30}
-                            className="hover:-translate-y-1 transition-transform cursor-pointer"
-                          />
-                        </Link>
-                      )}
-                      {/* Telegram Link */}
-                      {project.telegram && (
-                        <Link href={project.telegram} target="_blank">
-                          <BsTelegram
-                            size={30}
-                            className="hover:-translate-y-1 transition-transform cursor-pointer"
-                          />
-                        </Link>
-                      )}
-                    </div>
-                  </div>
                 </div>
-              </SlideUp>
-            </div>
-          );
-        })}
+              </div>
+            </SlideUp>
+          </div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default ProjectsSection;
+export default MatchaBowlListSection;
