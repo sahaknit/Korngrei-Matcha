@@ -14,7 +14,7 @@ const HeroSection: React.FC = () => {
         <div className="w-full max-w-lg mx-auto md:w-1/2"> {/* Increased max-w-lg for larger image */}
           <div className="bg-[#e3edc9] rounded-2xl shadow-lg overflow-hidden h-[500px] flex items-center justify-center p-4"> {/* Added p-4 for breathing room */}
             <Image
-              src="/20251003_025401.png" // Replace with your matcha bowl photo
+              src="/20251003_062821.jpg" // Replace with your matcha bowl photo
               priority
               quality={100}
               width={600} // Bigger image
