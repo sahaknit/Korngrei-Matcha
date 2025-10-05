@@ -23,10 +23,19 @@ export default function SlideUp({ children, offset = "0px" }: Props) {
       { rootMargin: offset }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
+    const currentRef = ref.current; // Capture ref.current to use in the cleanup function
+
+    if (currentRef) {
+      observer.observe(currentRef)
     }
-  }, [ref])
+
+    // BEST PRACTICE: Add a cleanup function to disconnect the observer
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    }
+  }, [offset]) // <-- FIX: The dependency array now includes 'offset'
 
   return (
     <div ref={ref} className="relative opacity-0">

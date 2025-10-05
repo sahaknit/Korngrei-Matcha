@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.5.4",
+    "@tailwindcss/postcss": "^4.1.14",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/react-scroll": "^1.8.10",
