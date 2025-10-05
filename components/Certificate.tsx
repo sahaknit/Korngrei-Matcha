@@ -1,154 +1,218 @@
-"use client"; // Mark this as a client component
+// components/MatchaBowlListSection.tsx
+"use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+// Removed SlideUp import as we are changing the layout
+import { BsCartPlus } from "react-icons/bs";
+import { useLanguage } from "components/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
-const allCertificates = [
+// --- Simple type definitions for type safety within the component ---
+interface ProductTranslation {
+  name: string;
+  description: string;
+  // alt?: string; // Optional if used
+}
+
+interface ProductsObject {
+  [key: number]: ProductTranslation | undefined;
+}
+
+interface ProductItem {
+  id: number;
+  name: string;
+  price: string;
+  description: string;
+  imageThumbnail: string; // Changed for clarity
+  alt: string;           // Added alt text property
+  link: string;
+}
+
+// --- Matcha Bowl Products Data ---
+const matchaBowls: ProductItem[] = [
   {
-    name: "Figma for UX Design",
-    organization: "Coursera",
-    date: "Mar 2024",
-    description:
-      "Completed an advanced UI/UX design course focusing on creating intuitive and user-friendly interfaces.",
-    image: "/Figma_UX_Design.png",
-    link: "https://www.linkedin.com/learning/certificates/84b399454550a00c2c7e844d57f5a2befad667e4338bd934cba1a3399105a30f",
+    id: 1,
+    name: "KBACH KHMER Matcha Bowl",
+    price: "$18.00",
+    description: "A handcrafted matcha bowl set featuring a traditional design. Perfect for daily tea rituals with its smooth finish and elegant curves.",
+    imageThumbnail: "/Picsart_25-10-05_22-31-34-739.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Classic Matcha Bowl Set Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/classic-matcha-bowl",
   },
   {
-    name: "Get Started with Figma",
-    organization: "Coursera",
-    date: "2024",
-    description:
-      "Mastered HTML, CSS, JavaScript, and modern frameworks like React to build dynamic web applications.",
-    image: "/figma_coursera.jpg",
-    link: "https://coursera.org/share/9a46e712ccb49a1c14caf8aa3dffbd50",
+    id: 2,
+    name: "Whish Holder Kbach Khmer",
+    price: "$6.00",
+    description: "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts.",
+    imageThumbnail: "/Picsart_25-10-05_22-32-30-148.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Modern Zen Matcha Bowl Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/modern-zen-matcha-bowl",
   },
   {
-    name: "Introduction to UI and UX Design Course",
-    organization: "Codecademy",
-    date: "March 2024",
-    description:
-      "Learned advanced React concepts including hooks, context API, and state management techniques.",
-    image: "/figma_codecamp.png",
-    link: "https://www.codecademy.com/profiles/web8229980501/certificates/4ccef8d532484ea2aeec3b3b3dbb4f9c",
+    id: 3,
+    name: "Bamboo Whisk",
+    price: "$6.50",
+    description: "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection.",
+    imageThumbnail: "/whisk.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Premium Ceremonial Set Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/premium-ceremonial-set",
   },
   {
-    name: "Introduction to User Experience Design",
-    organization: "Coursera",
-    date: "March 2024",
-    description:
-      "Gained proficiency in JavaScript fundamentals and advanced topics like closures and async programming.",
-    image: "/figma_coursera01.jpg",
-    link: "https://www.coursera.org/account/accomplishments/verify/R8X5X23UBPFR",
+    id: 4,
+    name: "Bamboo Scoop",
+    price: "$3.00",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    imageThumbnail: "/Picsart_25-10-05_21-54-43-127.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Travel-Friendly Matcha Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/travel-matcha-kit",
   },
   {
-    name: "Digital Skills: User Experience",
-    organization: "FutureLearn",
-    date: "2024",
-    description:
-      "Learned server-side development using Node.js, Express, and REST APIs.",
-    image: "/1709043660087.jpg",
-    link: "https://www.futurelearn.com/certificates/la2xlz7",
+    id: 5,
+    name: "Bamboo Spoon",
+    price: "$3.50",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    imageThumbnail: "/Picsart_25-10-05_21-53-46-601.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Another Travel Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/travel-matcha-kit-2",
   },
   {
-    name: "Digital Skills: User Experience",
-    organization: "Le Wagon",
-    date: "Feb 2024",
-    description:
-      "Learned server-side development using Node.js, Express, and REST APIs.",
-    image: "/1709043854884.jpg",
-    link: "https://app.lewagon.school/certificates/ni7bivjryn",
+    id: 6,
+    name: "sifter",
+    price: "$5.00",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    imageThumbnail: "/Picsart_25-10-05_21-50-53-861.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Yet Another Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/travel-matcha-kit-3",
   },
-  {
-    name: "Introduction to web Designing",
-    organization: "Great Learning",
-    date: "Feb 2024",
-    description:
-      "Learned server-side development using Node.js, Express, and REST APIs.",
-    image: "/1709044071157.jpg",
-    link: "https://olympus.mygreatlearning.com/courses/91537/certificate",
+   {
+    id: 7,
+    name: "Matcha Whisk set",
+    price: "$8.00",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    imageThumbnail: "/Picsart_25-10-05_22-42-28-273.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Yet Another Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/travel-matcha-kit-3",
   },
-  {
-    name: "UI/UX Beginner",
-    organization: "Great Learning",
-    date: "2024",
-    description:
-      "Learned server-side development using Node.js, Express, and REST APIs.",
-    image: "/1708772751653.jpg",
-    link: "https://olympus.mygreatlearning.com/courses/55928/certificate",
-  },
-  {
-    name: "Designing a Low Fidelity Prototype in Figma",
-    organization: "Coursera",
-    date: "2024",
-    description:
-      "Learned server-side development using Node.js, Express, and REST APIs.",
-    image: "/1710176258922.jpg",
-    link: "https://coursera.org/share/d028573f16032243f16ed144f212367e",
-  },
+  
 ];
 
-const CertificatesSection = () => {
-  const [visibleCertificates, setVisibleCertificates] = useState(3); // Show only 3 certificates initially
+const MatchaBowlListSection = () => {
+  const { language } = useLanguage();
+  const t = translations[language] || translations['en']; // Fallback
 
-  // Function to show more certificates
-  const showMore = () => {
-    setVisibleCertificates((prevCount) =>
-      Math.min(prevCount + 3, allCertificates.length)
-    );
-  };
+  // --- Defensive checks ---
+  if (!t) {
+    console.error(`[MatchaBowlListSectionitem] Translations object not found for language '${language}' or fallback 'en'.`);
+    return <div className="text-red-500 p-4">Error loading translations.</div>;
+  }
+
+  if (!t.MatchaBowlListSection) {
+    console.error(`[MatchaBowlListSectionitem] MatchaBowlListSection translations not found for language '${language}'. Check translations.ts structure.`);
+    return <div className="text-red-500 p-4">Error loading section translations.</div>;
+  }
 
   return (
-    <section id="certificates" className="py-10">
-      <h1 className="my-10 text-center font-bold text-4xl">
-        Certificates
-        <hr className="w-6 h-1 mx-auto my-4 bg-yellow-500 border-0 rounded"></hr>
-      </h1>
-
-      {/* Certificate Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {allCertificates.slice(0, visibleCertificates).map((certificate, idx) => (
-          <div key={idx} className="flex flex-col items-center space-y-4">
-            {/* Certificate Image */}
-            <Link href={certificate.link} target="_blank">
-              <Image
-                src={certificate.image}
-                alt={certificate.name}
-                width={400}
-                height={300}
-                className="rounded-xl shadow-xl hover:opacity-70 transition-opacity w-full max-w-[400px]"
-              />
-            </Link>
-
-            {/* Certificate Details */}
-            <div className="text-center">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                {certificate.name}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                {certificate.organization} | {certificate.date}
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                {certificate.description}
-              </p>
-            </div>
-          </div>
-        ))}
+    <section id="matcha-bowls" className="relative bg-transparent px-6 sm:px-12 lg:px-20 py-12">
+      {/* Section Header */}
+      <div className="text-center mb-12">
+        <h1 className="my-4 font-bold text-4xl text-[#386c00] dark:text-white font-[family-name:var(--font-kantumruy)]">
+          {t.MatchaBowlListSection.title}
+        </h1>
+        <hr className="w-6 h-1 mx-auto my-4 bg-[#e3edc9] border-0 rounded" />
       </div>
 
-      {/* See More Button */}
-      {visibleCertificates < allCertificates.length && (
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={showMore}
-            className="bg-yellow-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition-colors"
-          >
-            See More
-          </button>
-        </div>
-      )}
+      {/* --- NEW: HERO THUMBNAIL IMAGE --- */}
+      {/* Centered, large image with rounded corners and shadow */}
+     {/* --- HERO THUMBNAIL IMAGE --- */}
+<div className="flex justify-center mb-12">
+  <div className="relative w-full max-w-4xl h-96 rounded-2xl overflow-hidden shadow-xl">
+    {/* The container defines the size (w-full, max-w-4xl, h-96) */}
+    <Image
+      src="/Untitled design (10).png" // --- REPLACE with your actual hero image path ---
+      alt="Featured Matcha Set Collection" // --- REPLACE with descriptive alt text ---
+      fill // --- Tells Next.js to make the image fill the parent container ---
+      className="object-cover w-full h-full" // --- Ensures the image covers the space ---
+      priority
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 1024px"
+    />
+  </div>
+</div>
+{/* --- END: HERO THUMBNAIL IMAGE --- */}
+      {/* --- END: HERO THUMBNAIL IMAGE --- */}
+
+
+      {/* --- CHANGED GRID LAYOUT TO 2 ROWS x 3 COLS (Max 6 items) --- */}
+      {/* Grid: 1 column on mobile, 2 on small screens, 3 on medium and larger screens */}
+      {/* max-w-6xl ensures a reasonable maximum width for the grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {matchaBowls.map((bowl) => {
+          // --- Use type assertion to fix the TS error ---
+          const productsitem = t.productsitem as ProductsObject | undefined;
+          const translatedBowl = productsitem?.[bowl.id];
+
+          return (
+            <div
+              key={bowl.id}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300 flex flex-col"
+            >
+              {/* --- Thumbnail Image --- */}
+              {/* Fixed height container for consistent grid rows */}
+              <div className="relative h-64 w-full">
+  <Link
+    href={bowl.link}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Image
+      src={bowl.imageThumbnail}
+      alt={bowl.name}
+      layout="fill"
+      objectFit="cover"
+      className="rounded-lg transition-transform duration-300 group-hover:scale-105"
+    />
+  </Link>
+</div>
+
+              {/* --- Details Below Image --- */}
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  {/* Product Name */}
+                  <h2 className="text-xl font-bold mb-2 text-[#386c00] dark:text-white font-[family-name:var(--font-kantumruy)]">
+                    {/* Use translated name if available, fallback to default */}
+                    {translatedBowl?.name || bowl.name}
+                  </h2>
+                  {/* Product Price */}
+                  <p className="text-xl font-semibold text-[#386c00] dark:text-yellow-400 mb-3 font-[family-name:var(--font-kantumruy)]">
+                    {bowl.price}
+                  </p>
+                  {/* Product Description */}
+                  <p className="text-base leading-6 mb-4 text-neutral-600 dark:text-neutral-400 font-[family-name:var(--font-kantumruy)]">
+                    {/* Use translated description if available, fallback to default */}
+                    {translatedBowl?.description || bowl.description}
+                  </p>
+                </div>
+                {/* --- Shop Now Button (Always at the bottom) --- */}
+                <Link href={bowl.link} passHref legacyBehavior>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 font-bold text-white transition-all duration-300 bg-[#386c00] hover:bg-[#2d5400] rounded-lg shadow-lg hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#386c00] focus:ring-offset-2 font-[family-name:var(--font-kantumruy)]"
+                  >
+                    <BsCartPlus size={18} className="mr-2" />
+                    {/* Use translated button text if available, fallback to a default */}
+                    {t.MatchaBowlListSection.buttonText || "Shop Now"}
+                  </a>
+                </Link>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {/* --- END OF CHANGED GRID LAYOUT --- */}
     </section>
   );
 };
 
-export default CertificatesSection;
+export default MatchaBowlListSection;
