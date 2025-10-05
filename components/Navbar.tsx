@@ -1,115 +1,92 @@
-"use client"; // This is a client component
-import React, { useState, useEffect } from "react";
-import { Link } from "react-scroll/modules";
+"use client";
+
+import React, { useState } from "react";
+import Link from 'next/link';
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { RiMoonFill, RiSunLine } from "react-icons/ri";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
+import { useLanguage } from "components/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
-interface NavItem {
-  label: string;
-  page: string;
-}
-
-// Updated Navigation Items for Matcha Bowl Business
-const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: "Home",
-    page: "home",
-  },
-  {
-    label: "Shop",
-    page: "shop",
-  },
-  {
-    label: "Learn",
-    page: "learn",
-  },
-  {
-    label: "Our Story",
-    page: "our-story",
-  },
-  {
-    label: "Contact Us",
-    page: "contact-us",
-  },
-];
+// --- 1. IMPORT THE NEW FLAG COMPONENT ---
+import CountryFlag from "react-country-flag";
 
 export default function Navbar() {
-  const { systemTheme, theme, setTheme } = useTheme();
+  // --- Hooks for State Management ---
+  const { theme, setTheme } = useTheme();
+  const { language, setLanguage } = useLanguage();
   const [navbar, setNavbar] = useState(false);
-  const [mounted, setMounted] = useState(false); // Track if the component is mounted
 
-  // Set dark mode as the default theme after mounting
-  useEffect(() => {
-    setMounted(true); // Mark the component as mounted
-    setTheme("white"); // Set the theme to dark
-  }, [setTheme]);
-
-  // Prevent rendering until the component is mounted to avoid hydration mismatch
-  if (!mounted) {
-    return null;
-  }
-
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  // Get the translation object for the current language
+  const t = translations[language]; 
+  
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'km' : 'en');
+  };
+  
+  const NAV_ITEMS = [
+    { label: t.Navbar.home, href: "/" },
+    { label: t.Navbar.shop, href: "/shop" },
+    { label: t.Navbar.learn, href: "/learn" },
+    { label: t.Navbar.ourStory, href: "/about" },
+    { label: t.Navbar.contactUs, href: "/contact" },
+  ];
 
   return (
-    <header className="w-full mx-auto px-4 sm:px-20 fixed top-0 z-50 shadow bg-white dark:bg-gray-900 dark:border-b dark:border-gray-700">
-      <div className="flex justify-between items-center py-3 md:py-5">
-        {/* Logo - Circular Container */}
-        <div className="relative">
-          <Link to="home" className="cursor-pointer block" aria-label="Home">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#386c00] bg-[#e3edc9] shadow-md hover:shadow-lg transition-all duration-300">
+    <header className="w-full mx-auto px-4 sm:px-20 fixed top-0 z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-700">
+      <div className="flex justify-between items-center py-3">
+        
+        {/* ======== LOGO SECTION ======== */}
+        <div className="flex items-center">
+          <Link href="/" aria-label="Home">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#386c00] bg-[#e3edc9] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer">
               <Image
                 src="/01_KORNG_REI_BRAND_IDENTITY_PREMARY-removebg-preview.png"
-                alt="Matcha Bowl Logo"
-                fill
-                className="object-cover"
+                alt="Korng Rei Matcha Logo"
+                width={64}
+                height={64}
+                className="object-contain"
                 priority
               />
             </div>
           </Link>
         </div>
 
-        {/* Navigation Links (Desktop View) */}
+        {/* ======== DESKTOP NAVIGATION ======== */}
         <div className="hidden md:flex items-center space-x-6">
           {NAV_ITEMS.map((item, idx) => (
-            <Link
-              key={idx}
-              to={item.page}
-              className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 font-medium text-sm sm:text-base"
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-            >
+            <Link key={idx} href={item.href} className="font-sans text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 font-medium transition-colors">
               {item.label}
             </Link>
           ))}
-          {/* Theme Toggle Button */}
-          {currentTheme === "dark" ? (
-            <button
-              onClick={() => setTheme("light")}
-              className="bg-[#e3edc9] p-2 rounded-xl shadow hover:scale-105 transition duration-300"
-              suppressHydrationWarning={true}
-              aria-label="Switch to Light Mode"
+          
+          <div className="flex items-center space-x-4 pl-4">
+            {/* --- Theme Toggle Button --- */}
+            <button 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
+              className="p-2 rounded-full text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" 
+              aria-label="Toggle Theme"
             >
-              <RiSunLine size={25} color="#386c00" />
+              {theme === "dark" ? <RiSunLine size={22} /> : <RiMoonFill size={22} />}
             </button>
-          ) : (
-            <button
-              onClick={() => setTheme("dark")}
-              className="bg-[#e3edc9] p-2 rounded-xl shadow hover:scale-105 transition duration-300"
-              suppressHydrationWarning={true}
-              aria-label="Switch to Dark Mode"
+
+            {/* --- 2. LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - DESKTOP --- */}
+            <button 
+              onClick={toggleLanguage} 
+              className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              aria-label="Switch Language"
             >
-              <RiMoonFill size={25} color="#386c00" />
+              {language === 'en' ? (
+                <CountryFlag countryCode="KH" svg style={{ width: '1.75em', height: '1.75em' }} title="ភាសាខ្មែរ" />
+              ) : (
+                <CountryFlag countryCode="US" svg style={{ width: '1.75em', height: '1.75em' }} title="English" />
+              )}
             </button>
-          )}
+          </div>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* ======== MOBILE MENU BUTTON ======== */}
         <div className="md:hidden">
           <button
             className="p-2 text-[#386c00] rounded-md outline-none focus:border-gray-400 focus:border"
@@ -119,48 +96,43 @@ export default function Navbar() {
             {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation Links */}
-        <div
-          className={`fixed inset-0 bg-white dark:bg-gray-900 z-50 flex flex-col items-center justify-center space-y-8 ${
-            navbar ? "block" : "hidden"
-          }`}
-        >
-          {NAV_ITEMS.map((item, idx) => (
-            <Link
-              key={idx}
-              to={item.page}
-              className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-lg font-medium"
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              offset={-100}
-              duration={500}
-              onClick={() => setNavbar(false)} // Close menu on link click
+      {/* ======== MOBILE MENU OVERLAY ======== */}
+      <div className={`fixed inset-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-center space-y-8 ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
+        {NAV_ITEMS.map((item, idx) => (
+          <Link
+            key={idx}
+            href={item.href}
+            className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-lg font-medium"
+            onClick={() => setNavbar(false)} // Close menu on link click
+          >
+            {item.label}
+          </Link>
+        ))}
+        
+        <div className="flex items-center space-x-6 mt-12">
+            {/* --- Mobile Theme Toggle --- */}
+            <button 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
+              className="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              aria-label="Toggle Theme"
             >
-              {item.label}
-            </Link>
-          ))}
-          {/* Theme Toggle Button */}
-          {currentTheme === "dark" ? (
-            <button
-              onClick={() => setTheme("light")}
-              className="bg-[#e3edc9] p-2 rounded-xl shadow hover:scale-105 transition duration-300"
-              suppressHydrationWarning={true}
-              aria-label="Switch to Light Mode"
-            >
-              <RiSunLine size={25} color="#386c00" />
+              {theme === "dark" ? <RiSunLine size={25} /> : <RiMoonFill size={25} />}
             </button>
-          ) : (
-            <button
-              onClick={() => setTheme("dark")}
-              className="bg-[#e3edc9] p-2 rounded-xl shadow hover:scale-105 transition duration-300"
-              suppressHydrationWarning={true}
-              aria-label="Switch to Dark Mode"
+
+            {/* --- 3. LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - MOBILE --- */}
+            <button 
+              onClick={toggleLanguage} 
+              className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              aria-label="Switch Language"
             >
-              <RiMoonFill size={25} color="#386c00" />
+              {language === 'en' ? (
+                <CountryFlag countryCode="KH" svg style={{ width: '2.5em', height: '2.5em' }} title="ភាសាខ្មែរ" />
+              ) : (
+                <CountryFlag countryCode="US" svg style={{ width: '2.5em', height: '2.5em' }} title="English" />
+              )}
             </button>
-          )}
         </div>
       </div>
     </header>

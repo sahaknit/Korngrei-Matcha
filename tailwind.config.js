@@ -10,7 +10,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
+    extend: {  
+        fontFamily: {
+        sans: [
+          'var(--font-poppins)',
+          'var(--font-kantumruy)',
+        ],
+      },  
       screens: { sm: "480px", md: "768px", lg: "976px", xl: "1440pd" },
       animation: {
         rotate: "rotate 10s linear infinite",

@@ -1,6 +1,11 @@
+// components/MatchaSetsSection.tsx
 "use client"; // Mark this as a client component
+
 import React from "react";
 import Image from "next/image";
+// 1. Import the useLanguage hook and translations
+import { useLanguage } from "components/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 // Define the type for a matcha set item
 interface MatchaSetItem {
@@ -13,23 +18,24 @@ interface MatchaSetItem {
   alt: string; // Alt text for the list view image
 }
 
+// Sample data - Ideally, this would come from a data source with translations
 const matchaSets: MatchaSetItem[] = [
   {
     id: 1,
-    name: "Classic Ceramic Bowl Set",
+    name: "KBACH KHMER Ceramic Bowl",
     description: "A timeless matcha bowl set crafted from high-quality ceramic.",
     features: ["Hand-painted finish", "Authentic shape", "Easy to clean"],
-    price: "$45.00",
-    image: "/matcha-set-1-thumb.jpg", // Replace with your actual thumbnail image path
+    price: "$18.00",
+    image: "/IMG_6478.JPG", // Replace with your actual thumbnail image path
     alt: "Classic Ceramic Matcha Bowl Set"
   },
   {
     id: 2,
-    name: "Bamboo & Stone Ritual Set",
+    name: "Whisk Holder",
     description: "An elegant combination of natural bamboo tools and a stone bowl.",
     features: ["Includes whisk (chasen)", "Scoop (chashaku)", "Natural materials"],
-    price: "$65.00",
-    image: "/matcha-set-2-thumb.jpg", // Replace with your actual thumbnail image path
+    price: "$6.00",
+    image: "/IMG_6467.JPG", // Replace with your actual thumbnail image path
     alt: "Bamboo and Stone Matcha Ritual Set"
   },
   {
@@ -71,67 +77,110 @@ const matchaSets: MatchaSetItem[] = [
 ];
 
 const MatchaSetsSection = () => {
+  // 2. Use the hook to get the current language
+  const { language } = useLanguage();
+  // 3. Get the translation object for the current language
+  // --- Add a check for the language key ---
+  const t = translations[language] || translations['en']; // Fallback to 'en' if language key is somehow invalid
+
+  // --- Add debugging logs ---
+  // console.log("DEBUG - MatchaSetsSection:");
+  // console.log("  language from context:", language);
+  // console.log("  t (translations[language]):", t);
+  // console.log("  t?.MatchaSetsSection:", t?.MatchaSetsSection);
+
+  // --- Defensive checks ---
+  if (!t) {
+    console.error(`[MatchaSetsSection] Translations object not found for language '${language}' or fallback 'en'.`);
+    return <div className="text-red-500 p-4">Error loading translations.</div>; // Or a more graceful fallback
+  }
+
+  if (!t.MatchaSetsSection) {
+    console.error(`[MatchaSetsSection] MatchaSetsSection translations not found for language '${language}'. Check translations.ts structure.`);
+    return <div className="text-red-500 p-4">Error loading section translations.</div>; // Or a more graceful fallback
+  }
+
   return (
-    <section id="matcha-sets" className="py-6 bg-transparent"> {/* Changed ID and added bg-transparent */}
-      <h1 className="my-6 text-center font-bold text-4xl text-[#386c00] dark:text-white"> {/* Updated color */}
-        Our Matcha Sets
-        <hr className="w-6 h-1 mx-auto my-4 bg-[#e3edc9] border-0 rounded"></hr> {/* Updated color */}
+    <section id="matcha-sets" className="py-6 bg-transparent">
+      {/* Section Header */}
+      <h1 className="my-6 text-center font-bold text-4xl text-[#386c00] dark:text-white font-[family-name:var(--font-kantumruy)]">
+        {/* Use the translated title */}
+        {t.MatchaSetsSection.title}
+        <hr className="w-6 h-1 mx-auto my-4 bg-[#e3edc9] border-0 rounded" />
       </h1>
 
       {/* Hero Image Section */}
-      <div className="mb-12"> {/* Add some bottom margin to separate from the list */}
+      <div className="mb-12">
         <Image
           src="/IMG_1366.PNG" // Replace with your actual large image path
-          alt="Featured Matcha Set Collection"
-          width={1200} // Adjust width as needed for your layout
-          height={600} // Adjust height as needed for your layout
-          className="w-full h-auto object-cover rounded-xl shadow-lg" // Make it full width, responsive, and add styling
+          alt={t.MatchaSetsSection.heroImageAlt || "Featured Matcha Set Collection"} // Use translated alt text
+          width={1200}
+          height={600}
+          className="w-full h-auto object-cover rounded-xl shadow-lg"
         />
       </div>
 
       {/* List of Matcha Sets */}
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-semibold text-center mb-8 text-[#386c00] dark:text-white"> {/* Optional subheading */}
-          Explore Our Matcha set items
+        {/* Optional Subheading */}
+        <h2 className="text-2xl font-semibold text-center mb-8 text-[#386c00] dark:text-white font-[family-name:var(--font-kantumruy)]">
+          {/* Use the translated subheading */}
+          {t.MatchaSetsSection.subheading}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Grid layout for sets */}
-          {matchaSets.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col" // Container for each set card
-            >
-              {/* Image for each set in the grid */}
-              <div className="h-48 w-full relative"> {/* Fixed height container for consistent grid rows */}
-                <Image
-                  src={item.image} // Use the thumbnail image for the grid
-                  alt={item.alt}
-                  fill // Use fill to make the image fill the container
-                  className="object-cover" // Ensure the image covers the space nicely
-                />
-              </div>
-              {/* Details for each set in the grid */}
-              <div className="p-4 flex-grow flex flex-col justify-between"> {/* Flex column to push price to bottom */}
-                <div>
-                  <h3 className="text-lg font-bold text-[#386c00] dark:text-white mb-1"> {/* Updated color */}
-                    {item.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                    {item.description}
-                  </p>
-                  <ul className="list-disc pl-4 text-xs text-gray-500 dark:text-gray-400 mb-2">
-                    {item.features.slice(0, 2).map((feature, featIdx) => ( // Show only first 2 features or adjust as needed
-                      <li key={featIdx} className="truncate">{feature}</li> // Truncate if features are long
-                    ))}
-                  </ul>
+        {/* Grid layout for sets */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {matchaSets.map((item) => {
+            // --- Get translated product data ---
+            const translatedProduct = t.products?.[item.id];
+            return (
+              <div
+                key={item.id}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col"
+              >
+                {/* Image for each set in the grid */}
+                <div className="h-48 w-full relative">
+                  <Image
+                    src={item.image}
+                    // Use translated alt text if available, fallback to default
+                    alt={translatedProduct?.alt || item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw" // Responsive image loading
+                  />
                 </div>
-                <div className="mt-auto"> {/* Push price to the bottom */}
-                  <span className="text-lg font-semibold text-[#386c00] dark:text-yellow-400"> {/* Updated color */}
-                    {item.price}
-                  </span>
+                {/* Details for each set in the grid */}
+                <div className="p-4 flex-grow flex flex-col justify-between">
+                  <div>
+                    {/* Product Name */}
+                    <h3 className="text-lg font-bold text-[#386c00] dark:text-white mb-1 font-[family-name:var(--font-kantumruy)]">
+                      {/* Use translated name if available, fallback to default */}
+                      {translatedProduct?.name || item.name}
+                    </h3>
+                    {/* Product Description */}
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 font-[family-name:var(--font-kantumruy)]">
+                      {/* Use translated description if available, fallback to default */}
+                      {translatedProduct?.description || item.description}
+                    </p>
+                    {/* Product Features */}
+                    <ul className="list-disc pl-4 text-xs text-gray-500 dark:text-gray-400 mb-2 font-[family-name:var(--font-kantumruy)]">
+                      {/* Show only first 2 features or adjust as needed */}
+                      {(translatedProduct?.features || item.features).slice(0, 2).map((feature, featIdx) => (
+                        <li key={featIdx} className="truncate">
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Price */}
+                  <div className="mt-auto">
+                    <span className="text-lg font-semibold text-[#386c00] dark:text-yellow-400 font-[family-name:var(--font-kantumruy)]">
+                      {item.price}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
