@@ -8,34 +8,38 @@ interface Props {
 }
 
 export default function SlideUp({ children, offset = "0px" }: Props) {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null) // It's good practice to type your ref
 
   useEffect(() => {
+    // Store ref.current in a variable to avoid issues in the cleanup function
+    const element = ref.current; 
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("opacity-0")
             entry.target.classList.add("animate-slideUpCubiBezier")
+            // Optional: unobserve after animation to save resources
+            // observer.unobserve(entry.target);
           }
         })
       },
       { rootMargin: offset }
     )
 
-    const currentRef = ref.current; // Capture ref.current to use in the cleanup function
-
-    if (currentRef) {
-      observer.observe(currentRef)
+    if (element) {
+      observer.observe(element)
     }
 
-    // BEST PRACTICE: Add a cleanup function to disconnect the observer
+    // --- Cleanup Function ---
+    // This function is called when the component is unmounted or when the effect re-runs.
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (element) {
+        observer.unobserve(element)
       }
     }
-  }, [offset]) // <-- FIX: The dependency array now includes 'offset'
+  }, [offset]) // The dependency array now correctly includes 'offset'. 'ref' is not needed as it's stable.
 
   return (
     <div ref={ref} className="relative opacity-0">

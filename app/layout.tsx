@@ -60,7 +60,6 @@
 //   )
 // }
 
-
 // --- 1. IMPORT Poppins along with Kantumruy_Pro ---
 import { Poppins, Kantumruy_Pro } from 'next/font/google';
 import Providers from '@/components/Providers';
@@ -70,30 +69,34 @@ import "../styles/globals.css";
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '700'], // We'll load regular and bold weights
-  variable: '--font-poppins', // Give it a CSS variable name
+  weight: ['400', '700'], // Regular and bold weights
+  variable: '--font-poppins',
 });
 
-// Kantumruy Pro configuration remains the same
+// --- 3. CONFIGURE Kantumruy Pro ---
 const kantumruy = Kantumruy_Pro({
   subsets: ['latin', 'khmer'],
   variable: '--font-kantumruy',
 });
 
+// --- 4. SITE METADATA ---
 export const metadata = {
   title: 'Korng Rei Matcha - Premium Matcha Bowls',
   description: 'Discover handcrafted matcha bowls and ceremonial sets for the perfect tea experience.',
 };
 
+// --- 5. ROOT LAYOUT ---
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* --- 3. ADD the new Poppins variable to the body className --- */}
-      <body className={`${poppins.variable} ${kantumruy.variable} dark:bg-stone-900`}>
+      <body
+        suppressHydrationWarning
+        className={`${poppins.variable} ${kantumruy.variable} dark:bg-stone-900 antialiased`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

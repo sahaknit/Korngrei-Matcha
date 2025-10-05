@@ -1,3 +1,40 @@
+// lib/types.ts (or add to the top of lib/translations.ts)
+
+// Define the structure for a single product's translation
+export interface ProductTranslation {
+  name: string;
+  description: string;
+  // If you use features or alt text from translations, add them here:
+  // features?: string[]; // Optional array of strings
+  // alt?: string;        // Optional string
+  // price?: string;      // Optional if price is translated
+  // Add other product-specific translatable properties as needed
+}
+
+// Define the structure for the entire products object
+// {[productId: number]: ProductTranslation} tells TS keys are numbers, values are ProductTranslation objects
+export interface ProductsTranslations {
+  [productId: number]: ProductTranslation;
+}
+
+// Optional: Define the structure for section-specific translations (like MatchaBowlListSection)
+export interface SectionTranslation {
+  title: string;
+  buttonText: string;
+  // Add other keys like heroImageAlt, subheading, etc. if used
+}
+
+// You can optionally define the whole language structure for even stricter typing
+// interface LanguageTranslations {
+//   MatchaBowlListSection: SectionTranslation;
+//   // ... other sections
+//   products: ProductsTranslations; // Reference the ProductsTranslations interface
+// }
+// export type Translations = {
+//   [K in keyof typeof translations]: LanguageTranslations; // Map over 'en', 'km' etc.
+// };
+
+
 export const translations = {
   en: {
     Navbar: {
@@ -20,7 +57,7 @@ export const translations = {
       storyParagraph3: "Noticing the local appreciation for Japanese Matcha, we were inspired to innovate. We set out to create a uniquely Cambodian product, starting with pure, locally-sourced green tea and meticulously blending it with the best ingredients our country has to offer.",
       missionStatement: "Our mission is to create high-quality, hygienic products you can trust for your well-being."
     },
-       MatchaBowlListSection: { // Add this new section
+       MatchaBowlListSectionitem: { // Add this new section
       title: "Our Matcha Bowls",
       buttonText: "Shop Now"
     },
@@ -50,57 +87,66 @@ export const translations = {
         description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers."
       },
     },
-      MatchaSetsSection: {
-      title: "Our Matcha Sets",
-      subheading: "Explore Our Collection", // Example translation
-      heroImageAlt: "Featured Matcha Set Collection", // Example translation
-      // Add other keys if your component uses them (e.g., buttonText for a CTA)
+    MatchaBowlListSection: { // Add this new section
+      title: "Our Matcha Set",
+      buttonText: "Shop Now"
     },
-    // ---> END ADDITION <---
-
-    // ---> UPDATE/ENSURE PRODUCTS TRANSLATIONS EXIST FOR ENGLISH <---
-    product: {
-      // ... (other existing product translations for MatchaBowlListSection if any) ...
-      // Translations for items displayed in MatchaSetsSection (IDs 1-6)
+     productsitem: {
       1: {
-        name: "KBACH KHMER Ceramic Bowl", // Match the name in your component's matchaSets array
-        description: "A timeless matcha bowl set crafted from high-quality ceramic.",
-        features: ["Hand-painted finish", "Authentic shape", "Easy to clean"], // Translate features if needed
-        alt: "Classic Ceramic Matcha Bowl Set" // Specific alt text translation
+        name: "KBACH KHMER Matcha Bowl",
+        description: "A handcrafted matcha bowl set featuring a traditional design. Perfect for daily tea rituals with its smooth finish and elegant curves."
       },
       2: {
-        name: "Whisk Holder",
-        description: "An elegant combination of natural bamboo tools and a stone bowl.",
-        features: ["Includes whisk (chasen)", "Scoop (chashaku)", "Natural materials"],
-        alt: "Bamboo and Stone Matcha Ritual Set"
+        name: "Whish Holder Kbach Khmer",
+        description: "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts."
       },
       3: {
-        name: "Modern Minimalist Set",
-        description: "A sleek, contemporary take on the traditional matcha experience.",
-        features: ["Geometric design", "Matte finish", "Compact storage"],
-        alt: "Modern Minimalist Matcha Set"
+        name: "Bamboo Whisk",
+        description: "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection."
       },
       4: {
-        name: "Premium Handcrafted Bowl",
-        description: "A unique, individually crafted bowl by a master artisan.",
-        features: ["One-of-a-kind design", "Traditional techniques", "Comes with certificate"],
-        alt: "Premium Handcrafted Matcha Bowl"
+        name: "Bamboo Scoop",
+        description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers."
       },
       5: {
-        name: "Travel-Friendly Kit",
-        description: "A portable set perfect for enjoying matcha on the go.",
-        features: ["Compact and lightweight", "Durable materials", "Carrying case included"],
-        alt: "Travel-Friendly Matcha Kit"
+        name: "Bamboo Spoon",
+        description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers."
       },
       6: {
-        name: "Luxury Gold-Edged Set",
-        description: "An opulent set featuring gold accents for a special occasion.",
-        features: ["Gold rim details", "Premium packaging", "Ideal gift option"],
-        alt: "Luxury Gold-Edged Matcha Set"
+        name: "Sifter",
+        description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers."
       },
-      // ... (potentially other product IDs for MatchaBowlListSection) ...
+      7: {
+        name: "Matcha Whisk set",
+        description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers."
+      },
     },
+   
+    
+
+    CertificatesSection: {
+    title: "Certificates",
+    seeMoreButtonText: "See More"
+  },
+  certificates: {
+    1: {
+      name: "Figma for UX Design",
+      organization: "Coursera",
+      date: "Mar 2024",
+      description: "Completed an advanced UI/UX design course focusing on creating intuitive and user-friendly interfaces."
+      // alt: "Figma for UX Design Certificate Thumbnail" // Optional
+    },
+    2: {
+      name: "Get Started with Figma",
+      organization: "Coursera",
+      date: "2024",
+      description: "Mastered HTML, CSS, JavaScript, and modern frameworks like React to build dynamic web applications."
+    },
+    // ... Add translations for IDs 3-9
+  },
+    
   
+      
     
   },
   km: {
@@ -125,7 +171,7 @@ export const translations = {
       missionStatement: "បេសកកម្មរបស់យើងគឺបង្កើតផលិតផលដែលមានគុណភាពខ្ពស់ ដែលអាចទុកចិត្តបានសម្រាប់សុខុមាលភាពរបស់អ្នក។"
     },
      MatchaBowlListSection: { // Add this new section
-      title: "ចានម៉ាតស៊ីរបស់យើង",
+      title: "ចានម៉ាតឆារបស់យើង",
       buttonText: "ទិញឥឡូវនេះ"
     },
     products: {
@@ -155,56 +201,92 @@ export const translations = {
       },
       
     },
-        MatchaSetsSection: {
-      title: "សំណុំម៉ាតស៊ីរបស់យើង", // Example Khmer translation
-      subheading: "រុករកកម្រងរបស់យើង", // Example Khmer translation
-      heroImageAlt: "កម្រងម៉ាតស៊ីដែលបានលក់", // Example Khmer translation
-      // Add other keys translated to Khmer if your component uses them
+     MatchaBowlListSectionitem: { // Add this new section
+      title: "ឈុតផលិតផលតែម៉ាត់ឆារបស់យើង",
+      buttonText: "ទិញឥឡូវនេះ"
     },
-    // ---> END ADDITION <---
+    productsitem: {
+  "1": {
+    "name": "ចានឆុងតែម៉ាត់ឆាក្បាច់ខ្មែរ",
+    "description": "ឈុតចានឆុងតែម៉ាត់ឆាធ្វើដោយដៃ ដែលមានការរចនាតាមក្បាច់បុរាណ។ ល្អឥតខ្ចោះសម្រាប់ពិធីឆុងតែប្រចាំថ្ងៃ ជាមួយនឹងផ្ទៃរលោងស្អាត និងរាងកោងដ៏ប្រណីត។"
+  },
+  "2": {
+    "name": "ជើងទ្រឧបករណ៍កូរតែម៉ាត់ឆាក្បាច់ខ្មែរ",
+    "description": "ការរចនាចានឆុងតែម៉ាត់ឆាបែបសម័យទំនើប ដែលជាការរួមបញ្ចូលគ្នារវាងរាងដ៏រលោងស្អាត និងផ្ទៃដែលមានលក្ខណៈបែបធម្មជាតិ។ ស័ក្តិសមបំផុតសម្រាប់អ្នកនិយមចូលចិត្តតែបែបសម័យថ្មី។"
+  },
+  "3": {
+    "name": "ឧបករណ៍កូរតែពីឫស្សី",
+    "description": "ឈុតសម្រាប់ពិធីឆុងតែដ៏ពិសេស ដែលរួមមានឧបករណ៍កូរតែពីឫស្សី ស្លាបព្រាដួស និងម្សៅតែម៉ាត់ឆាគុណភាពខ្ពស់។ បង្កើនបទពិសោធន៍នៃការពិសាតែរបស់អ្នក ជាមួយនឹងឈុតដ៏ប្រណីតនេះ។"
+  },
+  "4": {
+    "name": "ស្លាបព្រាដួសតែពីឫស្សី",
+    "description": "ឈុតសម្រាប់ធ្វើដំណើរខ្នាតតូច ងាយស្រួលយកតាមខ្លួន ដែលរួមមានចានឆុងតែខ្នាតតូច ឧបករណ៍កូរតែ និងស្លាបព្រាដួស។ ល្អឥតខ្ចោះសម្រាប់អ្នកចូលចិត្តតែដែលឧស្សាហ៍ធ្វើដំណើរ។"
+  },
+  "5": {
+    "name": "ស្លាបព្រាឫស្សី",
+    "description": "ឈុតសម្រាប់ធ្វើដំណើរខ្នាតតូច ងាយស្រួលយកតាមខ្លួន ដែលរួមមានចានឆុងតែខ្នាតតូច ឧបករណ៍កូរតែ និងស្លាបព្រាដួស។ ល្អឥតខ្ចោះសម្រាប់អ្នកចូលចិត្តតែដែលឧស្សាហ៍ធ្វើដំណើរ។"
+  },
+  "6": {
+    "name": "ប្រដាប់រែងម្សៅតែ",
+    "description": "ឈុតសម្រាប់ធ្វើដំណើរខ្នាតតូច ងាយស្រួលយកតាមខ្លួន ដែលរួមមានចានឆុងតែខ្នាតតូច ឧបករណ៍កូរតែ និងស្លាបព្រាដួស។ ល្អឥតខ្ចោះសម្រាប់អ្នកចូលចិត្តតែដែលឧស្សាហ៍ធ្វើដំណើរ។"
+  },
+  "7": {
+    "name": "ឈុតឧបករណ៍កូរតែម៉ាត់ឆា",
+    "description": "ឈុតសម្រាប់ធ្វើដំណើរខ្នាតតូច ងាយស្រួលយកតាមខ្លួន ដែលរួមមានចានឆុងតែខ្នាតតូច ឧបករណ៍កូរតែ និងស្លាបព្រាដួស។ ល្អឥតខ្ចោះសម្រាប់អ្នកចូលចិត្តតែដែលឧស្សាហ៍ធ្វើដំណើរ។"
+  }
+},
 
-    // ---> UPDATE/ENSURE PRODUCTS TRANSLATIONS EXIST FOR KHMER <---
-    product: {
-      // ... (other existing product translations for MatchaBowlListSection if any, translated to Khmer) ...
-      // Translations for items displayed in MatchaSetsSection (IDs 1-6) - TRANSLATED TO KHMER
+    CertificatesSection: {
+      title: "វិញ្ញាបនប័ត្រ", // This one you already have
+      seeMoreButtonText: "មើលបន្ថែមទៀត" // This one you already have
+    },
+    certificates: {
+      // ---> ADD KHMER TRANSLATIONS FOR EACH CERTIFICATE ID HERE <---
       1: {
-        name: "ឈុតចានម៉ាតស៊ីខេមរកែន", // Example Khmer translation
-        description: "ឈុតម៉ាតស៊ីដែលបានបង្កើតដោយដៃដែលមានគុណភាពខ្ពស់។", // Example Khmer translation
-        features: ["ការដាក់ពណ៌ដោយដៃ", "រូបរាងដើម", "ងាយស្រួលក្នុងការសំអាត"], // Translate features if needed
-        alt: "ឈុតចានម៉ាតស៊ីបុរាណ" // Specific alt text translation in Khmer
+        name: "Figma សម្រាប់ការរចនា UX",
+        organization: "Coursera",
+        date: "មីនា 2024",
+        description: "បានបញ្ចប់វគ្គសិក្សាកម្រិតខ្ពស់នៃការរចនា UI/UX ដោយផ្តោតលើការបង្កើតចំណុចប្រទាក់ដែលងាយស្រួលប្រើប្រាស់ និងជាប់ស្នាក់ស្នូល។"
+        // alt: "វិញ្ញាបនប័ត្រ Figma សម្រាប់ការរចនា UX" // Optional, add if used
       },
       2: {
-        name: "កន្លែងដាក់ប៊ីត", // Example Khmer translation
-        description: "ការរួមបញ្ចូលគ្នានៃឧបករណ៍ប៊ីតធម្មជាតិ និងចានថ្ម។", // Example Khmer translation
-        features: ["រួមបញ្ចូលប៊ីត (chasen)", "ចាន (chashaku)", "សម្ភារៈធម្មជាតិ"],
-        alt: "សំណុំពិធីប៊ីត និងចាន" // Specific alt text translation in Khmer
+        name: "ចាប់ផ្តើមជាមួយ Figma",
+        organization: "Coursera",
+        date: "2024",
+        description: "បាន dominé HTML, CSS, JavaScript និង Framework ទំនើបដូចជា React ដើម្បីបង្កើតកម្មវិធីវែបឌីណាមិក។"
+        // alt: "..." // Optional
       },
       3: {
-       name: "សំណុំម៉ូឌើនមីនីម៉ាល", // Example Khmer translation
-        description: "ការបកប្រែទំនើបនៃបទពិសោធន៍ម៉ាតស៊ីបុរាណ។", // Example Khmer translation
-        features: ["រចនារូបវិមាត្រ", "ប៉ៅម៉ាត់", "ផ្ទុះផ្ទាល់ខ្លួន"],
-        alt: "សំណុំម៉ូឌើនមីនីម៉ាលម៉ាតស៊ី" // Specific alt text translation in Khmer
+        name: "ការណែនាំចូលទៅកាន់ការរចនា UI និង UX",
+        organization: "Codecademy",
+        date: "មីនា 2024",
+        description: "បានរៀនពីគំនិតកម្រិតខ្ពស់នៃ React រួមមាន hooks, context API និងវិធីសាស្ត្រគ្រប់គ្រង state។"
+        // alt: "..." // Optional
       },
       4: {
-        name: "ចានប៊ីតដែលបានបង្កើតដោយដៃ", // Example Khmer translation
-        description: "ចានដែលមានរចនាប័ទ្មពិសេសដោយសិល្បៈករ។", // Example Khmer translation
-        features: ["រចនាប័ទ្មមួយគត់", "បទពិសោធន៍បុរាណ", "មានវិញ្ញាបនប័ត្រ"],
-        alt: "ចានប៊ីតដែលបានបង្កើតដោយដៃ" // Specific alt text translation in Khmer
+        name: "ការណែនាំចូលទៅកាន់បទពិសោធន៍អ្នកប្រើប្រាស់",
+        organization: "Coursera",
+        date: "មីនា 2024",
+        description: "ទទួលបានជំនាញក្នុងការ Fundamentals នៃ JavaScript និងប្រធានបទកំរិតខ្ពស់ដូចជា closures និង async programming។"
+        // alt: "..." // Optional
       },
       5: {
-        name: "កញ្ចប់ដែលអាចយកទៅដំណើរ", // Example Khmer translation
-        description: "សំណុំដែលអាចយកទៅដំណើរបានសម្រាប់ការរីករាយជាមួយនឹងម៉ាតស៊ី។", // Example Khmer translation
-        features: ["ខ្ទប់ និងស្រាល", "សម្ភារៈមានគុណភាព", "មានកន្លែងផ្ទុក"],
-        alt: "កញ្ចប់ដែលអាចយកទៅដំណើរ" // Specific alt text translation in Khmer
+        name: "ជំនាញឌីជីថល: បទពិសោធន៍អ្នកប្រើប្រាស់",
+        organization: "FutureLearn",
+        date: "2024",
+        description: "បានរៀនការអភិវឌ្ឍន៍ផ្នែក Server ដោយប្រើ Node.js, Express និង REST APIs។"
+        // alt: "..." // Optional
       },
       6: {
-        name: "សំណុំមាសដែលមានគែម", // Example Khmer translation
-        description: "សំណុំដែលមានគែមមាសសម្រាប់ព្រឹត្តិការណ៍ពិសេស។", // Example Khmer translation
-        features: ["គែមមាស", "កញ្ចប់ពិសេស", "ជម្រើសផ្តល់ជូនល្អ"],
-        alt: "សំណុំមាសដែលមានគែម" // Specific alt text translation in Khmer
+        name: "ជំនាញឌីជីថល: បទពិសោធន៍អ្នកប្រើប្រាស់",
+        organization: "Le Wagon",
+        date: "កុម្ភៈ 2024",
+        description: "បានរៀនការអភិវឌ្ឍន៍ផ្នែក Server ដោយប្រើ Node.js, Express និង REST APIs។"
+        // alt: "..." // Optional
       },
-      // ... (potentially other product IDs for MatchaBowlListSection, translated to Khmer) ...
     }
-    // LanguageSwitcher section can be removed
   },
+        
+    // LanguageSwitcher section can be removed
+  
 };
