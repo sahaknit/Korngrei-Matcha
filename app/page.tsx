@@ -10,7 +10,6 @@ export default function Home() {
       <AboutSection />
 
       <CertificatesSection/>
-      <AboutSection />
 
       <ProjectsSection />
     </main>

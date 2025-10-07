@@ -1,14 +1,9 @@
-// lib/types.ts (or add to the top of lib/translations.ts)
-
-// Define the structure for a single product's translation
 export interface ProductTranslation {
   name: string;
   description: string;
-  // If you use features or alt text from translations, add them here:
-  // features?: string[]; // Optional array of strings
-  // alt?: string;        // Optional string
-  // price?: string;      // Optional if price is translated
-  // Add other product-specific translatable properties as needed
+  features: string[]; // Array of features
+  alt: string;        // Alt text for the image
+  // Add other product-specific translatable properties here if needed
 }
 
 // Define the structure for the entire products object
@@ -17,11 +12,13 @@ export interface ProductsTranslations {
   [productId: number]: ProductTranslation;
 }
 
-// Optional: Define the structure for section-specific translations (like MatchaBowlListSection)
+// Optional: Define structure for section-specific translations
 export interface SectionTranslation {
   title: string;
-  buttonText: string;
-  // Add other keys like heroImageAlt, subheading, etc. if used
+  // subheading?: string; // Make optional if not always present
+  // heroImageAlt?: string;
+  buttonText: string; // Add buttonText
+  // Add other common section keys
 }
 
 // You can optionally define the whole language structure for even stricter typing
@@ -143,6 +140,14 @@ export const translations = {
       description: "Mastered HTML, CSS, JavaScript, and modern frameworks like React to build dynamic web applications."
     },
     // ... Add translations for IDs 3-9
+  },
+  ShopPage: {
+    title: "Our Matcha Collection",
+    subtitle: "Discover our handcrafted selection of matcha bowls, sets, and accessories.",
+    searchPlaceholder: "Search products...",
+    buttonText: "Shop Now",
+    allCategories: "All",
+    noProductsMessage: "No products found. Try a different search or filter."
   },
     
   
@@ -284,7 +289,16 @@ export const translations = {
         description: "បានរៀនការអភិវឌ្ឍន៍ផ្នែក Server ដោយប្រើ Node.js, Express និង REST APIs។"
         // alt: "..." // Optional
       },
-    }
+    },
+     ShopPage: {
+    title: "កម្រងម៉ាតស៊ីរបស់យើង",
+    subtitle: "រុករកកម្រងម៉ាតស៊ីដែលបានបង្កើតដោយដៃរបស់យើង សំណុំ និងគ្រឿងបន្លាស់។",
+    searchPlaceholder: "ស្វែងរកផលិតផល...",
+    buttonText: "ទិញឥឡូវនេះ",
+    allCategories: "ទាំងអស់",
+    noProductsMessage: "រកមិនឃើញផលិតផល។ សូមព្យាយាមស្វែងរក ឬតម្រងផ្សេងទៀត។"
+  },
+  // ... products section (translated)
   },
         
     // LanguageSwitcher section can be removed
