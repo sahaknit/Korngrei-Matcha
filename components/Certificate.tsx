@@ -55,7 +55,7 @@ const matchaBowls: ProductItem[] = [
     name: "Bamboo Whisk",
     price: "$6.50",
     description: "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection.",
-    imageThumbnail: "/whisk.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/Picsart_25-10-29_12-42-55-855.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Premium Ceremonial Set Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/premium-ceremonial-set",
   },
@@ -130,7 +130,7 @@ const MatchaBowlListSection = () => {
   <div className="relative w-full max-w-4xl h-96 rounded-2xl overflow-hidden shadow-xl">
     {/* The container defines the size (w-full, max-w-4xl, h-96) */}
     <Image
-      src="/Untitled design (10).png" // --- REPLACE with your actual hero image path ---
+      src="/Untitled design (14).png" // --- REPLACE with your actual hero image path ---
       alt="Featured Matcha Set Collection" // --- REPLACE with descriptive alt text ---
       fill // --- Tells Next.js to make the image fill the parent container ---
       className="object-cover w-full h-full" // --- Ensures the image covers the space ---

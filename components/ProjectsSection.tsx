@@ -24,55 +24,55 @@ interface ProductItem {
 const matchaBowls: ProductItem[] = [
   {
     id: 1, // Adding an ID for better key usage
-    name: "Classic Matcha Bowl Set",
+    name: "Matcha bowl kbach khmer 01",
     price: "$29.99",
     description:
-      "A handcrafted matcha bowl set featuring a traditional design. Perfect for daily tea rituals with its smooth finish and elegant curves.",
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
     image: "/IMG_1361.JPG",
     link: "/shop/classic-matcha-bowl", // Replace with your product page URL
   },
   {
     id: 2,
-    name: "Modern Zen Matcha Bowl",
+    name: "Matcha bowl kbach khmer 02",
     price: "$29.99",
     description:
-      "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts.",
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
     image: "/IMG_1362.JPG",
     link: "/shop/modern-zen-matcha-bowl", // Replace with your product page URL
   },
   {
     id: 3,
-    name: "Premium Ceremonial Set",
+    name: "Matcha bowl kbach khmer 03",
     price: "$29.99",
     description:
-      "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection.",
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
     image: "/IMG_1360.JPG",
     link: "/shop/premium-ceremonial-set", // Replace with your product page URL
   },
   {
     id: 4,
-    name: "Travel-Friendly Matcha Kit",
+    name: "Matcha bowl kbach khmer 04",
     price: "$29.99",
     description:
-      "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
     image: "/IMG_1363.JPG",
     link: "/shop/travel-matcha-kit", // Replace with your product page URL
   },
   {
     id: 5,
-    name: "Another Travel Kit",
+    name: "Matcha bowl kbach khmer 05",
     price: "$29.99",
     description:
-      "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
     image: "/IMG_1364.PNG",
     link: "/shop/travel-matcha-kit-2", // Example link
   },
   {
     id: 6,
-    name: "Yet Another Kit",
+    name: "Matcha bowl kbach khmer 06",
     price: "$29.99",
     description:
-      "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
     image: "/IMG_1365.JPG",
     link: "/shop/travel-matcha-kit-3", // Example link
   },

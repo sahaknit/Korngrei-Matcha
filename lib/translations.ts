@@ -1,3 +1,4 @@
+// import { ProductsTranslations, SectionTranslation } from '@/lib/types'; 
 export interface ProductTranslation {
   name: string;
   description: string;
@@ -149,7 +150,16 @@ export const translations = {
     allCategories: "All",
     noProductsMessage: "No products found. Try a different search or filter."
   },
-    
+  BlogPage: {
+      title: "Our Blog",
+      subtitle: "Discover stories, guides, and insights about matcha culture and our craft.",
+      featuredPostsTitle: "Featured Posts",
+      allPostsTitle: "All Posts",
+      readMoreButtonText: "Read More",
+      buttonText: "Read Article", // Or whatever you use for the button
+      noPostsMessage: "No blog posts found. Stay tuned for updates!",
+      // Add other keys if your component uses them
+    },
   
       
     
@@ -163,8 +173,8 @@ export const translations = {
       contactUs: "ទំនាក់ទំនង",
     },
     HeroSection: {
-      title: "ស្វែងយល់ពីសិល្បៈនៃម៉ាឆា",
-      subtitle: "ឈុតម៉ាឆាធ្វើដោយដៃ សម្រាប់ពេលវេលាដ៏ស្ងប់សុខ។ ចាននីមួយៗផលិតដោយយកចិត្តទុកដាក់ តាមបែបប្រពៃណី និងរចនាឡើងសម្រាប់សម័យទំនើប។",
+      title: "សូមស្វាគមន៍មកកាន់ កង្រីម៉ាតឆារបស់យើង",
+      subtitle: "ឈុតម៉ាឆាធ្វើដោយដៃ សម្រាប់ពេលវេលាដ៏ល្អ។ ចាននីមួយៗផលិតដោយយកចិត្តទុកដាក់ តាមបែបប្រពៃណី និងរចនាឡើងសម្រាប់សម័យទំនើប។",
       buttonText: "ទំនាក់ទំនងយើង"
     },
        AboutSection: {
@@ -298,6 +308,16 @@ export const translations = {
     allCategories: "ទាំងអស់",
     noProductsMessage: "រកមិនឃើញផលិតផល។ សូមព្យាយាមស្វែងរក ឬតម្រងផ្សេងទៀត។"
   },
+  BlogPage: {
+      title: "ប្លក់របស់យើង",
+      subtitle: "រុករករឿងរ៉ាវ ដំណឹង និងគំនិតអំពីវប្បធម៌ម៉ាតស៊ី និងសិប្បកម្មរបស់យើង។",
+      featuredPostsTitle: "ប្រកាសដែលបានលក់",
+      allPostsTitle: "ប្រកាសទាំងអស់",
+      readMoreButtonText: "អានបន្ថែម",
+      buttonText: "អានអត្ថបទ", // Or whatever you use for the button, translated
+      noPostsMessage: "រកមិនឃើញប្លក់។ សូមរង់ចាំសម្រាប់បច្ចុប្បន្នភាព!",
+      // Add other keys if your component uses them (TRANSLATED)
+    },
   // ... products section (translated)
   },
         

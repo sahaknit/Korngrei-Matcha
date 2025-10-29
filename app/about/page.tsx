@@ -1,20 +1,20 @@
 // app/about/page.tsx
-"use client"; // Mark as client component for framer-motion
+"use client";
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Import framer-motion for text animations
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
-    <main className="bg-white dark:bg-gray-900 pt-24 pb-16 px-6 sm:px-12 lg:px-20"> {/* pt-24 for spacing below fixed navbar */}
+    <main className="bg-white dark:bg-gray-900 pt-24 pb-16 px-6 sm:px-12 lg:px-20">
       
       {/* Hero Section */}
       <section id="about-hero" className="text-center mb-16">
         <motion.h1
           className="text-4xl sm:text-5xl font-bold text-[#386c00] dark:text-[#e3edc9] mb-6"
-          initial={{ opacity: 0, y: -10 }} // Start slightly above
-          animate={{ opacity: 1, y: 0 }}   // Animate to final position
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           About Korng Rei
@@ -22,22 +22,21 @@ export default function AboutPage() {
         <motion.div
           className="w-24 h-1 bg-[#e3edc9] dark:bg-[#386c00] mx-auto rounded-full"
           initial={{ width: 0 }}
-          animate={{ width: 96 }} // Animate width
+          animate={{ width: 96 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         ></motion.div>
       </section>
 
-      {/* Hero Image Section - BIG IMAGE ON TOP */}
+      {/* Hero Image Section - Instagram-style square */}
       <section id="about-image" className="mb-16">
-        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl">
-          {/* Replace with your actual big hero image */}
+        <div className="relative w-full overflow-hidden rounded-2xl shadow-xl" style={{ paddingTop: '100%' }}>
           <Image
-            src="/Untitled design (10).png" // <-- UPDATE THIS PATH to your big image
+            src="/Untitled design (10).png"
             alt="Big Hero Image of Matcha Bowls"
+            className="object-contain w-full h-full absolute inset-0"
             fill
-            className="object-cover w-full h-full"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-            priority // Load this image with high priority
+            priority
           />
         </div>
       </section>
@@ -45,7 +44,6 @@ export default function AboutPage() {
       {/* Our Story Section */}
       <section id="our-story" className="mb-16">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          {/* Text Column */}
           <div className="md:w-1/2">
             <motion.h2
               className="text-3xl font-semibold text-[#386c00] dark:text-[#e3edc9] mb-4"
@@ -79,15 +77,14 @@ export default function AboutPage() {
             </motion.p>
           </div>
           
-          {/* Image Column (Optional smaller image, or remove if not needed) */}
+          {/* Instagram-style square image */}
           <div className="md:w-1/2 flex justify-center">
-            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg">
-              {/* Replace with a relevant image if desired */}
+            <div className="relative w-full overflow-hidden rounded-xl shadow-lg" style={{ paddingTop: '100%' }}>
               <Image
-                src="/smaller-story-image.jpg" // <-- UPDATE THIS PATH or remove this section
+                src="/smaller-story-image.jpg"
                 alt="Crafting matcha bowls with passion"
+                className="object-contain w-full h-full absolute inset-0"
                 fill
-                className="object-cover w-full h-full"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -98,7 +95,6 @@ export default function AboutPage() {
       {/* Our Mission Section */}
       <section id="our-mission" className="mb-16">
         <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-          {/* Text Column */}
           <div className="md:w-1/2">
             <motion.h2
               className="text-3xl font-semibold text-[#386c00] dark:text-[#e3edc9] mb-4"
@@ -123,15 +119,14 @@ export default function AboutPage() {
             </motion.p>
           </div>
           
-          {/* Image Column (Optional smaller image, or remove if not needed) */}
+          {/* Instagram-style square image */}
           <div className="md:w-1/2 flex justify-center">
-            <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg">
-              {/* Replace with a relevant image if desired */}
+            <div className="relative w-full overflow-hidden rounded-xl shadow-lg" style={{ paddingTop: '100%' }}>
               <Image
-                src="/smaller-mission-image.jpg" // <-- UPDATE THIS PATH or remove this section
+                src="/smaller-mission-image.jpg"
                 alt="Supporting local communities"
+                className="object-contain w-full h-full absolute inset-0"
                 fill
-                className="object-cover w-full h-full"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -151,7 +146,6 @@ export default function AboutPage() {
           What We Stand For
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Value 1 */}
           <motion.div
             className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700"
             initial={{ opacity: 0, y: 20 }}
@@ -163,7 +157,6 @@ export default function AboutPage() {
             <p className="text-gray-600 dark:text-gray-400">Unwavering commitment to the finest materials and craftsmanship.</p>
           </motion.div>
           
-          {/* Value 2 */}
           <motion.div
             className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700"
             initial={{ opacity: 0, y: 20 }}
@@ -175,7 +168,6 @@ export default function AboutPage() {
             <p className="text-gray-600 dark:text-gray-400">Honoring the heritage and techniques of Kampong Chhnang.</p>
           </motion.div>
           
-          {/* Value 3 */}
           <motion.div
             className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700"
             initial={{ opacity: 0, y: 20 }}

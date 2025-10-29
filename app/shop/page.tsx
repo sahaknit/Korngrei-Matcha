@@ -105,6 +105,97 @@ const matchaSets: ProductItem[] = [
     link: "/shop/travel-matcha-kit-3", // Example link
     category: "travel"
   },
+    {
+    id: 7,
+    name: "KBACH KHMER Matcha Bowl",
+    name_km: "ចានម៉ាតស៊ីខេមរកែន",
+    description: "A handcrafted matcha bowl set featuring a traditional design. Perfect for daily tea rituals with its smooth finish and elegant curves.",
+    description_km: "ឈុតចានម៉ាតស៊ីដែលបានបង្កើតដោយដៃដែលមានរចនាប័ទ្មបុរាណ។ ល្អឥតខ្ចោះសម្រាប់វិធីសាស្ត្រតែប្រចាំថ្ងៃ។",
+    price: "$18.00",
+    imageThumbnail: "/Picsart_25-10-05_22-31-34-739.jpg",
+    alt: "Classic Matcha Bowl Set Thumbnail",
+    alt_km: "រូបភាពឈុតចានម៉ាតស៊ីបុរាណ",
+    link: "/shop/classic-matcha-bowl",
+    category: "bowl"
+  },
+  {
+    id: 8,
+    name: "Whish Holder Kbach Khmer",
+    name_km: "កន្លែងដាក់ប៊ីតខេមរកែន",
+    description: "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts.",
+    description_km: "ការបកប្រែទំនើបនៃចានម៉ាតស៊ី ដែលរួមបញ្ចូលគ្នានូវបន្ទាត់ស្រួច និងអត្ថបទធម្មជាតិ។ ល្អសម្រាប់អ្នកស្រឡាញ់តែទំនើប។",
+    price: "$6.00",
+    imageThumbnail: "/Picsart_25-10-05_22-32-30-148.jpg",
+    alt: "Modern Zen Matcha Bowl Thumbnail",
+    alt_km: "រូបភាពចានម៉ាតស៊ីទំនើប",
+    link: "/shop/modern-zen-matcha-bowl",
+    category: "holder"
+  },
+  {
+    id: 9,
+    name: "Bamboo Whisk",
+    name_km: "ប៊ីតប្រអប់",
+    description: "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection.",
+    description_km: "ឈុតពិធីកម្មពិសេស ដែលមានប៊ីតប្រអប់ ដាក់ស្លឹក និងម៉ាតស៊ីដែលមានគុណភាព។ បង្កើនបទពិសោធន៍តែរបស់អ្នក។",
+    price: "$6.50",
+    imageThumbnail: "/Picsart_25-10-29_12-42-55-855.jpg",
+    alt: "Premium Ceremonial Set Thumbnail",
+    alt_km: "រូបភាពឈុតពិធីកម្មដែលមានគុណភាព",
+    link: "/shop/premium-ceremonial-set",
+    category: "whisk"
+  },
+  {
+    id: 10,
+    name: "Bamboo Scoop",
+    name_km: "ដាក់ស្លឹកប្រអប់",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    description_km: "សំណុំដែលអាចយកទៅដំណើរបាន ដែលមានចានម៉ាតស៊ីតូច ប៊ីត និងដាក់ស្លឹក។ ល្អសម្រាប់អ្នកស្រឡាញ់តែ។",
+    price: "$3.00",
+    imageThumbnail: "/Picsart_25-10-05_21-54-43-127.jpg",
+    alt: "Travel-Friendly Matcha Kit Thumbnail",
+    alt_km: "រូបភាពកញ្ចប់ដែលអាចយកទៅដំណើរ",
+    link: "/shop/travel-matcha-kit",
+    category: "scoop"
+  },
+  {
+    id: 11,
+    name: "Bamboo Spoon",
+    name_km: "ស្លឹកប្រអប់",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    description_km: "សំណុំដែលអាចយកទៅដំណើរបាន ដែលមានចានម៉ាតស៊ីតូច ប៊ីត និងដាក់ស្លឹក។ ល្អសម្រាប់អ្នកស្រឡាញ់តែ។",
+    price: "$3.50",
+    imageThumbnail: "/Picsart_25-10-05_21-53-46-601.jpg",
+    alt: "Another Travel Kit Thumbnail",
+    alt_km: "រូបភាពកញ្ចប់ដែលអាចយកទៅដំណើរមួយទៀត",
+    link: "/shop/travel-matcha-kit-2",
+    category: "spoon"
+  },
+  {
+    id: 12,
+    name: "sifter",
+    name_km: "ដាក់ស្លឹក",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    description_km: "សំណុំដែលអាចយកទៅដំណើរបាន ដែលមានចានម៉ាតស៊ីតូច ប៊ីត និងដាក់ស្លឹក។ ល្អសម្រាប់អ្នកស្រឡាញ់តែ។",
+    price: "$5.00",
+    imageThumbnail: "/Picsart_25-10-05_21-50-53-861.jpg",
+    alt: "Yet Another Kit Thumbnail",
+    alt_km: "រូបភាពកញ្ចប់មួយទៀត",
+    link: "/shop/travel-matcha-kit-3",
+    category: "sifter"
+  },
+  {
+    id: 13,
+    name: "Matcha Whisk set",
+    name_km: "ឈុតប៊ីតម៉ាតស៊ី",
+    description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
+    description_km: "សំណុំដែលអាចយកទៅដំណើរបាន ដែលមានចានម៉ាតស៊ីតូច ប៊ីត និងដាក់ស្លឹក។ ល្អសម្រាប់អ្នកស្រឡាញ់តែ។",
+    price: "$8.00",
+    imageThumbnail: "/Picsart_25-10-05_22-42-28-273.jpg",
+    alt: "Matcha Whisk Set Thumbnail",
+    alt_km: "រូបភាពឈុតប៊ីតម៉ាតស៊ី",
+    link: "/shop/travel-matcha-kit-4",
+    category: "whisk"
+  },
 ];
 
 const ShopPage = () => {
