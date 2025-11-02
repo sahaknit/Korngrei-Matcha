@@ -160,6 +160,21 @@ export const translations = {
       noPostsMessage: "No blog posts found. Stay tuned for updates!",
       // Add other keys if your component uses them
     },
+    CollectionSection: {
+      title: "Our New Collection", // Example translation
+      subtitle: "Discover our latest handcrafted matcha bowls and sets.", // Example translation
+      heroImageAlt: "Featured New Matcha Set Collection", // Example translation
+      buttonText: "Shop Now", // Example translation
+      // Add all other keys used in your CollectionSection component here
+      // e.g., collectionOneTitle: "Classic Matchabowls",
+    },
+    Newcollection: {
+      title: "Our New Collection", // Example translation
+      subtitle: "Discover our latest handcrafted matcha bowls and sets.", // Example translation
+      heroImageAlt: "Featured New Matcha Set Collection", // Example translation
+      buttonText: "Shop Now", // Example translation
+      // Add other keys your Newcollection component might use
+    },
   
       
     
@@ -317,6 +332,21 @@ export const translations = {
       buttonText: "អានអត្ថបទ", // Or whatever you use for the button, translated
       noPostsMessage: "រកមិនឃើញប្លក់។ សូមរង់ចាំសម្រាប់បច្ចុប្បន្នភាព!",
       // Add other keys if your component uses them (TRANSLATED)
+    },
+    CollectionSection: {
+      // Add Khmer translations for the same keys here
+     title: "កម្រងថ្មីរបស់យើង", // Example Khmer translation
+      subtitle: "រុករកចានម៉ាតស៊ី និងសំណុំដែលបានបង្កើតដោយដៃថ្មីៗរបស់យើង។", // Example Khmer translation
+      heroImageAlt: "កម្រងម៉ាតស៊ីដែលបានលក់ថ្មីៗ", // Example Khmer translation
+      buttonText: "ទិញឥឡូវនេះ", // Example Khmer translation
+      // ... other Khmer keys
+    },
+    Newcollection: {
+      title: "កម្រងថ្មីរបស់យើង", // Example Khmer translation
+      subtitle: "រុករកចានម៉ាតស៊ី និងសំណុំដែលបានបង្កើតដោយដៃថ្មីៗរបស់យើង។", // Example Khmer translation
+      heroImageAlt: "កម្រងម៉ាតស៊ីដែលបានលក់ថ្មីៗ", // Example Khmer translation
+      buttonText: "ទិញឥឡូវនេះ", // Example Khmer translation
+      // Add other keys your Newcollection component might use (TRANSLATED)
     },
   // ... products section (translated)
   },

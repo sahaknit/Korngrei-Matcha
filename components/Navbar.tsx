@@ -8,8 +8,6 @@ import { RiMoonFill, RiSunLine } from "react-icons/ri";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { useLanguage } from "components/context/LanguageContext";
 import { translations } from "@/lib/translations";
-
-// --- 1. IMPORT THE NEW FLAG COMPONENT ---
 import CountryFlag from "react-country-flag";
 
 export default function Navbar() {
@@ -19,12 +17,12 @@ export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
 
   // Get the translation object for the current language
-  const t = translations[language]; 
-  
+  const t = translations[language];
+
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'km' : 'en');
   };
-  
+
   const NAV_ITEMS = [
     { label: t.Navbar.home, href: "/" },
     { label: t.Navbar.shop, href: "/shop" },
@@ -34,7 +32,12 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="w-full mx-auto px-4 sm:px-20 fixed top-0 z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-700">
+    <header 
+      className="w-full mx-auto px-4 sm:px-20 fixed top-0 z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-700"
+      // CORRECTED: Added 'suppressHydrationWarning' property to resolve the console error 
+      // by ignoring attribute mismatches introduced by browser extensions (e.g., 'bis_skin_checked').
+      suppressHydrationWarning={true}
+    >
       <div className="flex justify-between items-center py-3">
         
         {/* ======== LOGO SECTION ======== */}
@@ -71,7 +74,7 @@ export default function Navbar() {
               {theme === "dark" ? <RiSunLine size={22} /> : <RiMoonFill size={22} />}
             </button>
 
-            {/* --- 2. LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - DESKTOP --- */}
+            {/* --- LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - DESKTOP --- */}
             <button 
               onClick={toggleLanguage} 
               className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -112,27 +115,27 @@ export default function Navbar() {
         ))}
         
         <div className="flex items-center space-x-6 mt-12">
-            {/* --- Mobile Theme Toggle --- */}
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
-              className="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? <RiSunLine size={25} /> : <RiMoonFill size={25} />}
-            </button>
+          {/* --- Mobile Theme Toggle --- */}
+          <button 
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
+            className="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+            aria-label="Toggle Theme"
+          >
+            {theme === "dark" ? <RiSunLine size={25} /> : <RiMoonFill size={25} />}
+          </button>
 
-            {/* --- 3. LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - MOBILE --- */}
-            <button 
-              onClick={toggleLanguage} 
-              className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              aria-label="Switch Language"
-            >
-              {language === 'en' ? (
-                <CountryFlag countryCode="KH" svg style={{ width: '2.5em', height: '2.5em' }} title="ភាសាខ្មែរ" />
-              ) : (
-                <CountryFlag countryCode="US" svg style={{ width: '2.5em', height: '2.5em' }} title="English" />
-              )}
-            </button>
+          {/* --- LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - MOBILE --- */}
+          <button 
+            onClick={toggleLanguage} 
+            className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            aria-label="Switch Language"
+          >
+            {language === 'en' ? (
+              <CountryFlag countryCode="KH" svg style={{ width: '2.5em', height: '2.5em' }} title="ភាសាខ្មែរ" />
+            ) : (
+              <CountryFlag countryCode="US" svg style={{ width: '2.5em', height: '2.5em' }} title="English" />
+            )}
+          </button>
         </div>
       </div>
     </header>
