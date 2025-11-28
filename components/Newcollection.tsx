@@ -48,9 +48,9 @@ const matchaSets: ProductItem[] = [
     image: "/Sakura02.jpg", // --- YOUR LARGE 1:1 IMAGE PATH ---
     alt_en: "Featured KBACH KHMER Ceramic Bowl", // --- SPECIFIC ALT TEXT FOR LARGE IMAGE (EN) ---
     alt_km: "ឈុតចានម៉ាតស៊ីខេមរកែន", // --- SPECIFIC ALT TEXT FOR LARGE IMAGE (KM) ---
-    subImage1: "/Sakura03.JPG", // --- YOUR SUB-IMAGE 1 PATH ---
-    subImage2: "/Sakura01.JPG", // --- YOUR SUB-IMAGE 2 PATH ---
-    subImage3: "/Sakura04.JPG", // --- YOUR SUB-IMAGE 3 PATH ---
+    subImage1: "/Sakura01.jpg", // --- YOUR SUB-IMAGE 1 PATH ---
+    subImage2: "/Sakura04.jpg", // --- YOUR SUB-IMAGE 2 PATH ---
+    subImage3: "/Sakura03.jpg", // --- YOUR SUB-IMAGE 3 PATH ---
     subAlt1_en: "KBACH KHMER Ceramic Bowl Side View", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 1 (EN) ---
     subAlt1_km: "ឈុតចានម៉ាតស៊ីខេមរកែន ទិដ្ឋភាពចំហៀង", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 1 (KM) ---
     subAlt2_en: "KBACH KHMER Ceramic Bowl Top View", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 2 (EN) ---
@@ -116,7 +116,7 @@ const matchaSets: ProductItem[] = [
     alt_km: "ចានប៊ីតដែលបានបង្កើតដោយដៃ", // --- SPECIFIC ALT TEXT FOR LARGE IMAGE (KM) ---
     subImage1: "/luck2.jpg", // --- YOUR SUB-IMAGE 1 PATH ---
     subImage2: "/luck3.jpg", // --- YOUR SUB-IMAGE 2 PATH ---
-    subImage3: "/luck4.jpg", // --- YOUR SUB-IMAGE 3 PATH ---
+    subImage3: "/luck4.JPG", // --- YOUR SUB-IMAGE 3 PATH ---
     subAlt1_en: "Premium Handcrafted Bowl Side View", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 1 (EN) ---
     subAlt1_km: "ចានប៊ីតដែលបានបង្កើតដោយដៃ ទិដ្ឋភាពចំហៀង", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 1 (KM) ---
     subAlt2_en: "Premium Handcrafted Bowl Top View", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 2 (EN) ---
