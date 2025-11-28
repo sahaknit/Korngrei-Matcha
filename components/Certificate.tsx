@@ -91,7 +91,7 @@ const matchaBowls: ProductItem[] = [
     name: "Matcha Whisk set",
     price: "$8.00",
     description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
-    imageThumbnail: "/Picsart_25-10-05_22-42-28-273.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/Picsart_25-11-28_15-16-55-081.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Yet Another Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/travel-matcha-kit-3",
   },
