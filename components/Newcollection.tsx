@@ -148,28 +148,7 @@ const matchaSets: ProductItem[] = [
     link: "/shop/travel-friendly-matcha-kit", // Replace with your product page URL
     category: "travel"
   },
-  {
-    id: 6,
-    name_en: "Yet Another Kit",
-    name_km: "កញ្ចប់ម៉ាតស៊ីផ្សេងទៀត",
-    description_en: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
-    description_km: "សំណុំដែលអាចយកទៅដំណើរបានសម្រាប់ការរីករាយជាមួយនឹងម៉ាតស៊ី។",
-    price: "$29.99",
-    image: "/hero-matcha-collection-6.jpg", // --- YOUR LARGE 1:1 IMAGE PATH ---
-    alt_en: "Featured Yet Another Kit", // --- SPECIFIC ALT TEXT FOR LARGE IMAGE (EN) ---
-    alt_km: "កញ្ចប់ម៉ាតស៊ីផ្សេងទៀត", // --- SPECIFIC ALT TEXT FOR LARGE IMAGE (KM) ---
-    subImage1: "/hero-matcha-collection-6.jpg", // --- YOUR SUB-IMAGE 1 PATH ---
-    subImage2: "/hero-matcha-collection-2.jpg", // --- YOUR SUB-IMAGE 2 PATH ---
-    subImage3: "/hero-matcha-collection-3.jpg", // --- YOUR SUB-IMAGE 3 PATH ---
-    subAlt1_en: "Yet Another Kit Overview", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 1 (EN) ---
-    subAlt1_km: "កញ្ចប់ម៉ាតស៊ីផ្សេងទៀត ទិដ្ឋភាពទូទៅ", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 1 (KM) ---
-    subAlt2_en: "Yet Another Kit Contents", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 2 (EN) ---
-    subAlt2_km: "កញ្ចប់ម៉ាតស៊ីផ្សេងទៀត មាតិកា", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 2 (KM) ---
-    subAlt3_en: "Yet Another Kit Bowl Detail", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 3 (EN) ---
-    subAlt3_km: "កញ្ចប់ម៉ាតស៊ីផ្សេងទៀត លម្អិតចាន", // --- SPECIFIC ALT TEXT FOR SUB-IMAGE 3 (KM) ---
-    link: "/shop/yet-another-kit", // Replace with your product page URL
-    category: "travel"
-  },
+
   // Add more products if needed (IDs 7, 8, ...)
 ];
 
