@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "components/context/LanguageContext";
 // Removed import { translations } from "@/lib/translations"; // No longer needed
-import { BsCartPlus, BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { BsCartPlus, BsChevronLeft, BsChevronRight, BsTelegram, BsFacebook, BsInstagram } from "react-icons/bs";
 import { motion } from "framer-motion";
 
 // --- Define ProductItem type with translations included ---
@@ -32,7 +32,7 @@ interface ProductItem {
   subImage1: string;
   subImage2: string;
   subImage3: string;
-  link: string;
+  link: string; // The internal link to the product page
   category?: string;
 }
 
@@ -189,6 +189,50 @@ const CollectionSection = () => {
   const productSubAlt2 = language === 'km' ? currentProduct.subAlt2_km : currentProduct.subAlt2_en;
   const productSubAlt3 = language === 'km' ? currentProduct.subAlt3_km : currentProduct.subAlt3_en;
 
+  // --- Construct the shareable URL (the page where the product is viewed) ---
+  // Assuming the 'link' field in your data points to the product page route
+  const currentUrl = typeof window !== 'undefined' ? window.location.origin + currentProduct.link : '';
+
+  // --- Function to copy URL to clipboard ---
+  const copyToClipboard = () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(currentUrl).then(
+        () => {
+          alert('Link copied to clipboard! Share it on your favorite platform.');
+        },
+        (err) => {
+          console.error('Failed to copy: ', err);
+          // Fallback: try execCommand if Clipboard API fails (less reliable)
+          const textArea = document.createElement("textarea");
+          textArea.value = currentUrl;
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+              alert('Link copied to clipboard! Share it on your favorite platform.');
+            } else {
+              alert('Could not copy link. Please try again.');
+            }
+          } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            alert('Could not copy link. Please try again.');
+          }
+          document.body.removeChild(textArea);
+        }
+      );
+    } else {
+      // Clipboard API not supported
+      alert('Copying link is not supported in your browser. Please copy the link manually.');
+    }
+  };
+
+  // --- Construct Share URLs ---
+  const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(productName)}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+  const instagramShareUrl = `https://www.instagram.com/?url=${encodeURIComponent(currentUrl)}`; // Note: Instagram doesn't officially support direct sharing via URL
+
   return (
     <section id="collection" className="relative bg-transparent px-6 sm:px-12 lg:px-20 py-12">
       {/* Section Header */}
@@ -314,6 +358,42 @@ const CollectionSection = () => {
                 </div>
               </div>
             </div>
+
+            {/* --- SOCIAL MEDIA SHARE BUTTONS --- */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-4 text-center md:text-left text-[#386c00] dark:text-white font-[family-name:var(--font-kantumruy)]">
+                Share this
+              </h3>
+              <div className="flex justify-center md:justify-start space-x-4">
+                {/* Telegram Share Button */}
+                <Link
+                  href={telegramShareUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+                  aria-label="Share on Telegram"
+                >
+                  <BsTelegram size={20} />
+                </Link>
+                {/* Facebook Share Button (Copies Link) */}
+                <button
+                  onClick={copyToClipboard}
+                  className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                  aria-label="Copy link to share on Facebook"
+                >
+                  <BsFacebook size={20} />
+                </button>
+                {/* Instagram Share Button (Copies Link) */}
+                <button
+                  onClick={copyToClipboard}
+                  className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-colors"
+                  aria-label="Copy link to share on Instagram"
+                >
+                  <BsInstagram size={20} />
+                </button>
+              </div>
+            </div>
+            {/* --- END SOCIAL MEDIA SHARE BUTTONS --- */}
 
             {/* --- Shop Now Button --- */}
             <div className="flex justify-center md:justify-start">
