@@ -76,6 +76,15 @@ const matchaBowls: ProductItem[] = [
     image: "/IMG_1365.JPG",
     link: "/shop/travel-matcha-kit-3", // Example link
   },
+   {
+    id: 7,
+    name: "Matcha bowl kbach khmer 07",
+    price: "$29.99",
+    description:
+      "A handcrafted matcha bowl inspired by traditional Kbach Khmer artistry. Each curve and carving reflects the timeless beauty of Cambodian culture — perfect for your daily tea ritual or as a unique collector’s piece.",
+    image: "/rumdoul-set-kr.png",
+    link: "/shop/travel-matcha-kit-3", // Example link
+  },
 ];
 
 const MatchaBowlListSection = () => {

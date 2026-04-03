@@ -37,7 +37,7 @@ const matchaBowls: ProductItem[] = [
     name: "KBACH KHMER Matcha Bowl",
     price: "$18.00",
     description: "A handcrafted matcha bowl set featuring a traditional design. Perfect for daily tea rituals with its smooth finish and elegant curves.",
-    imageThumbnail: "/Picsart_25-10-05_22-31-34-739.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/rum-bowl-kr.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Classic Matcha Bowl Set Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/classic-matcha-bowl",
   },
@@ -46,52 +46,61 @@ const matchaBowls: ProductItem[] = [
     name: "Whish Holder Kbach Khmer",
     price: "$6.00",
     description: "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts.",
-    imageThumbnail: "/Picsart_25-10-05_22-32-30-148.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/holder-kr.png", // --- YOUR THUMBNAIL IMAGE PATH ---
+    alt: "Modern Zen Matcha Bowl Thumbnail", // --- SPECIFIC ALT TEXT ---
+    link: "/shop/modern-zen-matcha-bowl",
+  },
+   {
+    id: 3,
+    name: "bowl and holder Kbach Khmer",
+    price: "$6.00",
+    description: "A contemporary take on matcha bowls, combining sleek lines with natural textures. Ideal for modern tea enthusiasts.",
+    imageThumbnail: "/set-holder-and-bowl-mini.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Modern Zen Matcha Bowl Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/modern-zen-matcha-bowl",
   },
   {
-    id: 3,
+    id: 4,
     name: "Bamboo Whisk",
-    price: "$6.50",
+    price: "$5.00",
     description: "An exclusive ceremonial set, complete with a bamboo whisk, scoop, and premium matcha powder. Elevate your tea experience with this luxurious collection.",
-    imageThumbnail: "/Picsart_25-10-29_12-42-55-855.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/whisk-kr.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Premium Ceremonial Set Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/premium-ceremonial-set",
   },
   {
-    id: 4,
+    id: 5,
     name: "Bamboo Scoop",
-    price: "$3.00",
+    price: "$1.00",
     description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
-    imageThumbnail: "/Picsart_25-10-05_21-54-43-127.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/scoop-kr.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Travel-Friendly Matcha Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/travel-matcha-kit",
   },
   {
-    id: 5,
+    id: 6,
     name: "Bamboo Spoon",
     price: "$3.50",
     description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
-    imageThumbnail: "/Picsart_25-10-05_21-53-46-601.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/spoon-kr.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Another Travel Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/travel-matcha-kit-2",
   },
   {
-    id: 6,
+    id: 7,
     name: "sifter",
-    price: "$5.00",
+    price: "$1.50",
     description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
-    imageThumbnail: "/Picsart_25-10-05_21-50-53-861.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/sifter-kr.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Yet Another Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/travel-matcha-kit-3",
   },
    {
-    id: 7,
+    id: 8,
     name: "Matcha Whisk set",
     price: "$8.00",
     description: "Compact and portable, this travel-friendly kit includes a mini matcha bowl, whisk, and scoop. Perfect for on-the-go tea lovers.",
-    imageThumbnail: "/Picsart_25-11-28_15-16-55-081.jpg", // --- YOUR THUMBNAIL IMAGE PATH ---
+    imageThumbnail: "/matcha-whisk-set.png", // --- YOUR THUMBNAIL IMAGE PATH ---
     alt: "Yet Another Kit Thumbnail", // --- SPECIFIC ALT TEXT ---
     link: "/shop/travel-matcha-kit-3",
   },
