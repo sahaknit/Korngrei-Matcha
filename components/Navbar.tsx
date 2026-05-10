@@ -102,40 +102,42 @@ export default function Navbar() {
       </div>
 
       {/* ======== MOBILE MENU OVERLAY ======== */}
-      <div className={`fixed top-0 left-0 right-0 bottom-0 bg-white/95 dark:bg-stone-900/95 z-50 flex flex-col items-center justify-center space-y-4 ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
-        {NAV_ITEMS.map((item, idx) => (
-          <Link
-            key={idx}
-            href={item.href}
-            className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-base font-medium"
-            onClick={() => setNavbar(false)} // Close menu on link click
-          >
-            {item.label}
-          </Link>
-        ))}
-        
-        <div className="flex items-center space-x-6 mt-6">
-          {/* --- Mobile Theme Toggle --- */}
-          <button 
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
-            className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-            aria-label="Toggle Theme"
-          >
-            {theme === "dark" ? <RiSunLine size={22} /> : <RiMoonFill size={22} />}
-          </button>
+      <div className={`fixed inset-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-center ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
+        <div className="flex flex-col items-center space-y-6">
+          {NAV_ITEMS.map((item, idx) => (
+            <Link
+              key={idx}
+              href={item.href}
+              className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-lg font-medium"
+              onClick={() => setNavbar(false)} // Close menu on link click
+            >
+              {item.label}
+            </Link>
+          ))}
+          
+          <div className="flex items-center space-x-6 mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-700">
+            {/* --- Mobile Theme Toggle --- */}
+            <button 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
+              className="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {theme === "dark" ? <RiSunLine size={24} /> : <RiMoonFill size={24} />}
+            </button>
 
-          {/* --- LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - MOBILE --- */}
-          <button 
-            onClick={toggleLanguage} 
-            className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-            aria-label="Switch Language"
-          >
-            {language === 'en' ? (
-              <CountryFlag countryCode="KH" svg style={{ width: '2em', height: '2em' }} title="ភាសាខ្មែរ" />
-            ) : (
-              <CountryFlag countryCode="US" svg style={{ width: '2em', height: '2em' }} title="English" />
-            )}
-          </button>
+            {/* --- LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - MOBILE --- */}
+            <button 
+              onClick={toggleLanguage} 
+              className="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              aria-label="Switch Language"
+            >
+              {language === 'en' ? (
+                <CountryFlag countryCode="KH" svg style={{ width: '1.8em', height: '1.8em' }} title="ភាសាខ្មែរ" />
+              ) : (
+                <CountryFlag countryCode="US" svg style={{ width: '1.8em', height: '1.8em' }} title="English" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </header>
