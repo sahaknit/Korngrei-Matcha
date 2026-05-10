@@ -102,20 +102,23 @@ export default function Navbar() {
       </div>
 
       {/* ======== MOBILE MENU OVERLAY ======== */}
-      <div className={`fixed inset-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-center ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
-        <div className="flex flex-col items-center space-y-6">
+      <div 
+        className={`fixed top-[72px] left-0 right-0 bg-white dark:bg-stone-900 z-40 flex flex-col items-center justify-start py-6 shadow-lg md:hidden ${navbar ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'} transition-all duration-300 ease-in-out`}
+        style={{ maxHeight: 'calc(100vh - 72px)' }}
+      >
+        <div className="flex flex-col items-center space-y-6 w-full">
           {NAV_ITEMS.map((item, idx) => (
             <Link
               key={idx}
               href={item.href}
-              className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-lg font-medium"
+              className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-lg font-medium py-2"
               onClick={() => setNavbar(false)} // Close menu on link click
             >
               {item.label}
             </Link>
           ))}
           
-          <div className="flex items-center space-x-6 mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-700">
+          <div className="flex items-center space-x-6 mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-700">
             {/* --- Mobile Theme Toggle --- */}
             <button 
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
