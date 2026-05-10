@@ -102,9 +102,7 @@ export default function Navbar() {
       </div>
 
       {/* ======== MOBILE MENU OVERLAY ======== */}
-      <div 
-        className={`fixed top-0 right-0 h-full w-64 bg-white dark:bg-stone-900 z-[60] shadow-lg flex flex-col items-center justify-center ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}
-      >
+      <div className={`fixed inset-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-center ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
         <div className="flex flex-col items-center space-y-6">
           {NAV_ITEMS.map((item, idx) => (
             <Link
