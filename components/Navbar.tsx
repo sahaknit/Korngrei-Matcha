@@ -102,7 +102,7 @@ export default function Navbar() {
       </div>
 
       {/* ======== MOBILE MENU OVERLAY ======== */}
-      <div className={`fixed top-0 left-0 right-0 bottom-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-center space-y-8 ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out overflow-y-auto`}>
+      <div className={`fixed top-0 left-0 right-0 bottom-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-start space-y-6 ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out overflow-y-auto py-20`}>
         {NAV_ITEMS.map((item, idx) => (
           <Link
             key={idx}
@@ -114,7 +114,7 @@ export default function Navbar() {
           </Link>
         ))}
         
-        <div className="flex items-center space-x-6 mt-12 pb-8">
+        <div className="flex items-center space-x-6 mt-8 pb-8">
           {/* --- Mobile Theme Toggle --- */}
           <button 
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
