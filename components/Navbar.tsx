@@ -102,26 +102,26 @@ export default function Navbar() {
       </div>
 
       {/* ======== MOBILE MENU OVERLAY ======== */}
-      <div className={`fixed top-0 left-0 right-0 bottom-0 bg-white dark:bg-stone-900 z-50 flex flex-col items-center justify-start space-y-6 ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out overflow-y-auto py-20`}>
+      <div className={`fixed top-0 left-0 right-0 bottom-0 bg-white/95 dark:bg-stone-900/95 z-50 flex flex-col items-center justify-center space-y-4 ${navbar ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
         {NAV_ITEMS.map((item, idx) => (
           <Link
             key={idx}
             href={item.href}
-            className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-lg font-medium"
+            className="text-neutral-900 hover:text-[#386c00] dark:text-neutral-100 cursor-pointer transition duration-300 text-base font-medium"
             onClick={() => setNavbar(false)} // Close menu on link click
           >
             {item.label}
           </Link>
         ))}
         
-        <div className="flex items-center space-x-6 mt-8 pb-8">
+        <div className="flex items-center space-x-6 mt-6">
           {/* --- Mobile Theme Toggle --- */}
           <button 
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")} 
-            className="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+            className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
             aria-label="Toggle Theme"
           >
-            {theme === "dark" ? <RiSunLine size={25} /> : <RiMoonFill size={25} />}
+            {theme === "dark" ? <RiSunLine size={22} /> : <RiMoonFill size={22} />}
           </button>
 
           {/* --- LANGUAGE SWITCHER BUTTON (NOW WITH FLAGS) - MOBILE --- */}
@@ -131,9 +131,9 @@ export default function Navbar() {
             aria-label="Switch Language"
           >
             {language === 'en' ? (
-              <CountryFlag countryCode="KH" svg style={{ width: '2.5em', height: '2.5em' }} title="ភាសាខ្មែរ" />
+              <CountryFlag countryCode="KH" svg style={{ width: '2em', height: '2em' }} title="ភាសាខ្មែរ" />
             ) : (
-              <CountryFlag countryCode="US" svg style={{ width: '2.5em', height: '2.5em' }} title="English" />
+              <CountryFlag countryCode="US" svg style={{ width: '2em', height: '2em' }} title="English" />
             )}
           </button>
         </div>
